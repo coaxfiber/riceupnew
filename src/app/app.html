@@ -1,17 +1,111 @@
-<ion-menu [content]="content" type="overlay">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-menu [content]="content" type="overlay" style="width: 80%">
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+
+  <ion-content style="background-color: #548746;color: white;">
+  
+  <img src="assets/imgs/popup.JPG" style="width: 100px;height: 100px;border-radius: 50%;display: block;
+  margin-left: auto;
+  margin-right: auto;margin-top: 10px" />
+      <p style="text-align: center;">TAIMI</p>
+    <div style="height: 2px;width: 80%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px;margin-left: auto;
+  margin-right: auto;"></div>
+    <table style="width: 100%;margin: 10px;font-size: 15px;margin-top: 20px">
+      <tr>
+        <td (click)="openPage(1)">
+          <ion-icon name="alarm"></ion-icon> VIEW PROFILE
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td  (click)="openPage(2)">
+          <ion-icon name="alarm"></ion-icon> SEARCH PRODUCT
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> SELL PRODUCT
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> FAVORITES
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> MESSAGES
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> SETTINGS
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> HELP
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+    </table>
+
+
+      <table style="width: 100%; margin: 20px;
+  bottom: 0;
+  left: 0;
+  position: absolute;">
+      <tr>
+        <td>
+          <ion-icon name="alarm"></ion-icon> SHOPPING BASKET
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="height: 10px"></div>
+          DONATE
+        </td>
+      </tr>
+      </table>
+    </ion-content>
 
 </ion-menu>
 

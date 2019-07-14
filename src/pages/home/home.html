@@ -1,18 +1,62 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50px" rowspan="2">
+          <button ion-button (click)="menuToggle()"  class="headbutton">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </td>
+      <td class="headtitle">PRODUCTS</td>
+      <td  style="width: 50px" rowspan="2">
+         <button ion-button class="headbutton">
+          <ion-icon name="ios-chatbubbles"></ion-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <input placeholder="Enter product name" class="headsearch" />
+      </td>
+    </tr>
+  </table>
+  <div style="height: 10px"></div>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <table style="width:100%; color:#6eae61;text-align: center;">
+    <tr>
+      <td>FRUIT</td>
+      <td>VEGETABLES</td>
+      <td>GRAINS</td>
+      <td>HERBS</td>
+      <td>BUNDLE</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><div style="width: 100%;height: 2px;background-color: #6eae61"></div></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <div style="height: 15px"></div>
+  <table style="width:100%;text-align: center;">
+    <tr style="font-size: 10px">
+      <td style="width: 25%">DISTANCE</td>
+      <td style="width: 25%">QUANTITY</td>
+      <td style="width: 25%">PRICE</td>
+      <td style="width: 25%">AVAILABILITY</td>
+    </tr>
+  </table>
+  <div style="height: 10px"></div>
+  <table  style="width:100%;text-align: center;">
+    <tr style="font-size: 20px;width:100%;text-align: center;padding: 10px">
+      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
+      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
+      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
+      <td style="padding-top: 10px;padding-bottom: 10px">all</td>
+    </tr>
+  </table>
+  <div style="height:15px;"></div>
+  <div style="width: 100%; text-align: center;color: white;background-color: #7fd1e8;padding: 3px;font-size: 17px">SEARCH</div>
 </ion-content>
