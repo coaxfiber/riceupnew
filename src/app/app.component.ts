@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ViewProfilePage } from '../pages/view-profile/view-profile';
+import { MessagesPage } from '../pages/messages/messages';
 
 
 import { MenuController } from 'ionic-angular';
@@ -46,6 +47,9 @@ export class MyApp {
     }
     if (x==2) {
         this.nav.setRoot(HomePage);
+    }
+    if (x==3) {
+        this.nav.setRoot(MessagesPage);
     }
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario

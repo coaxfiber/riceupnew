@@ -1,4 +1,4 @@
-<ion-menu [content]="content" type="overlay" style="width: 80%">
+<ion-menu [content]="content" type="overlay" style="width: 100%">
 
 
   <ion-content style="background-color: #548746;color: white;">
@@ -55,7 +55,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td (click)="openPage(3)">
           <ion-icon name="alarm"></ion-icon> MESSAGES
         </td>
       </tr>

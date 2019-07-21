@@ -7,9 +7,12 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PopupOnloadPage } from '../pages/popup-onload/popup-onload';
 import { ViewProfilePage } from '../pages/view-profile/view-profile';
+import { MessagesPage } from '../pages/messages/messages';
+import { MessagesUserPage } from '../pages/messages-user/messages-user';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { GlobalProvider } from '../providers/global/global';
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     PopupOnloadPage,
-    ViewProfilePage
+    ViewProfilePage,
+    MessagesPage,
+    MessagesUserPage
   ],
   imports: [
     BrowserModule,
@@ -30,12 +35,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     PopupOnloadPage,
-    ViewProfilePage
+    ViewProfilePage,
+    MessagesPage,
+    MessagesUserPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalProvider
   ]
 })
 export class AppModule {}

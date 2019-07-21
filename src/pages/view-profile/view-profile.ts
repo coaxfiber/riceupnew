@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { MenuController } from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
 
 /**
  * Generated class for the ViewProfilePage page.
@@ -17,20 +18,11 @@ import { MenuController } from 'ionic-angular';
 })
 export class ViewProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController,) {
+  constructor(public navCtrl: NavController,public global:GlobalProvider, public navParams: NavParams,public menuCtrl: MenuController,) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewProfilePage');
   }
-  menuToggle(){
-    if(this.menuCtrl.isOpen()){
-        console.log("is open");
-    }
-    if(this.menuCtrl.isEnabled()){
-        console.log("is enabled");
-    }
-
-    this.menuCtrl.toggle();
-  }
+  
 }
