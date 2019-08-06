@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ViewProfilePage } from '../pages/view-profile/view-profile';
 import { MessagesPage } from '../pages/messages/messages';
-
+import { BasketPage } from '../pages/basket/basket';
 
 import { MenuController } from 'ionic-angular';
 @Component({
@@ -50,6 +50,9 @@ export class MyApp {
     }
     if (x==3) {
         this.nav.setRoot(MessagesPage);
+    }
+    if (x==4) {
+        this.nav.setRoot(BasketPage);
     }
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario

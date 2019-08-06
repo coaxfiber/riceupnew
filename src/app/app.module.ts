@@ -9,6 +9,10 @@ import { PopupOnloadPage } from '../pages/popup-onload/popup-onload';
 import { ViewProfilePage } from '../pages/view-profile/view-profile';
 import { MessagesPage } from '../pages/messages/messages';
 import { MessagesUserPage } from '../pages/messages-user/messages-user';
+import { BasketPage } from '../pages/basket/basket';
+import { ProductAddPage } from '../pages/product-add/product-add';
+import { ManagePaymentsPage } from '../pages/manage-payments/manage-payments';
+import { ProductManagePage } from '../pages/product-manage/product-manage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +27,11 @@ import { GlobalProvider } from '../providers/global/global';
     PopupOnloadPage,
     ViewProfilePage,
     MessagesPage,
-    MessagesUserPage
+    MessagesUserPage,
+    BasketPage,
+    ProductAddPage,
+    ManagePaymentsPage,
+    ProductManagePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,11 @@ import { GlobalProvider } from '../providers/global/global';
     PopupOnloadPage,
     ViewProfilePage,
     MessagesPage,
-    MessagesUserPage
+    MessagesUserPage,
+    BasketPage,
+    ProductAddPage,
+    ManagePaymentsPage,
+    ProductManagePage
   ],
   providers: [
     StatusBar,

@@ -21,10 +21,12 @@
     </tr>
     <tr>
       <td colspan="3">
+        <span style="position: absolute;margin-left: 25%;margin-top:10px;color: white;font-size: 15px;">TAIMI</span>
           <img src="assets/imgs/popup.JPG" style="width: 120px;height: 120px;border-radius: 50%;display: block;
     margin-left: auto;
     margin-right: auto;margin-top: 10px;border: 5px solid white;" />
-        <p style="text-align: center;color: white;font-size: 15px;margin: 10px 0 0 0">TAIMI <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></p>
+        <p style="text-align: center;color: white;font-size: 15px;margin: 10px 0 0 0"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon> &nbsp; MY REVIEWS</p>
+        <div style="height: 10px"></div>
       </td>
     </tr>
   </table>
@@ -43,6 +45,60 @@
       <td style="border-right: 2px solid #6eae61;width: 25%">SALE</td>
       <td style="border-right: 2px solid #6eae61;width: 25%">PURCHASE</td>
       <td style="padding-top: 0;padding-bottom: 0px">PRODUCTS</td>
+    </tr>
+  </table>
+  <div style="height: 50px"></div>
+  <table style="width: 100%">
+    <tr>
+      <td style="width: 33.33%"  (click)="enterpage(1)">
+          <img src="assets/imgs/buttonaddp.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+      </td>
+      <td  style="width: 33.33%" (click)="enterpage(2)">
+        <img src="assets/imgs/buttonmanagepro.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+      </td>
+      <td  (click)="enterpage(3)">
+        <img src="assets/imgs/managepayments.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><div style="height: 30px;"></div></td>
+    </tr>
+    <tr>
+      <td style="width: 33.33%"  (click)="enterpage(4)">
+        <div style="">
+          <img src="assets/imgs/buttonfav.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+        </div>
+      </td>
+      <td  style="width: 33.33%" (click)="enterpage(5)">
+        <img src="assets/imgs/buttonbasket.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+      </td>
+      <td (click)="enterpage(6)">
+        <img src="assets/imgs/buttonsettings.png" style="width: 100%;
+              border-radius: 50%;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;" />
+      </td>
     </tr>
   </table>
 </ion-content>
