@@ -1,0 +1,43 @@
+page-view-profile-farmer {
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+	background-image: none;
+}
+
+
+    .skipbutton1{
+    	margin: 0 10px 0 10px;
+        width: 100%;
+        background-color: #6eae61;
+        color: white;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .skipbutton2{
+    	margin: 0 10px 0 10px;
+        width: 100%;
+        background-color: #add68b;
+        color: white;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .skipbutton3{
+    	margin: 0 10px 0 10px;
+        width: 100%;
+        background-color: white;
+        color: #81d2e8;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+        border: 2px solid #81d2e8;
+    }
+}

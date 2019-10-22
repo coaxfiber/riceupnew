@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController,ModalOptions } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 
+import { ModalSalamatPage } from '../modal-salamat/modal-salamat';
 /**
  * Generated class for the BasketPage page.
  *
@@ -15,12 +16,23 @@ import { GlobalProvider } from '../../providers/global/global';
   templateUrl: 'basket.html',
 })
 export class BasketPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public global:GlobalProvider) {
+greenline=1
+  constructor(private modal:ModalController,public navCtrl: NavController, public navParams: NavParams,public global:GlobalProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
   }
-
+greenlineactivate(x){
+	this.greenline = x
+}
+openmodal(){
+	const mymodaloptions:ModalOptions = {
+		enableBackdropDismiss:false
+	}
+	console.log('ess')
+	var none='none'
+	const mymodal = this.modal.create(ModalSalamatPage,{data:none},mymodaloptions)
+	mymodal.present()
+}
 }

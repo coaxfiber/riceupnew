@@ -25,38 +25,118 @@
 <ion-content padding>
   <table style="width:100%; color:#6eae61;text-align: center;">
     <tr>
-      <td>FRUIT</td>
-      <td>VEGETABLES</td>
-      <td>GRAINS</td>
-      <td>HERBS</td>
-      <td>BUNDLE</td>
+      <td (click)="greenlineactivate(1)">FRUIT</td>
+      <td (click)="greenlineactivate(2)">VEGETABLES</td>
+      <td (click)="greenlineactivate(3)">GRAINS</td>
+      <td (click)="greenlineactivate(4)">HERBS</td>
+      <td (click)="greenlineactivate(5)">BUNDLE</td>
     </tr>
     <tr>
-      <td></td>
-      <td><div style="width: 100%;height: 2px;background-color: #6eae61"></div></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>
+        <div class="greenline" *ngIf="greenline==1"></div>
+      </td>
+      <td>
+        <div class="greenline" *ngIf="greenline==2"></div>
+      </td>
+      <td>
+        <div class="greenline" *ngIf="greenline==3"></div>
+      </td>
+      <td>
+        <div class="greenline" *ngIf="greenline==4"></div>
+      </td>
+      <td>
+        <div class="greenline" *ngIf="greenline==5"></div>
+      </td>
     </tr>
   </table>
-  <div style="height: 15px"></div>
-  <table style="width:100%;text-align: center;">
-    <tr style="font-size: 10px">
-      <td style="width: 25%">DISTANCE</td>
-      <td style="width: 25%">QUANTITY</td>
-      <td style="width: 25%">PRICE</td>
-      <td style="width: 25%">AVAILABILITY</td>
-    </tr>
-  </table>
-  <div style="height: 10px"></div>
+  <div style="height: 20px"></div>
   <table  style="width:100%;text-align: center;">
-    <tr style="font-size: 20px;width:100%;text-align: center;padding: 10px">
-      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
-      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
-      <td style="border-right: 2px solid #6eae61;width: 25%">all</td>
-      <td style="padding-top: 10px;padding-bottom: 10px">all</td>
+    <tr style="font-size: 20px;width:100%;text-align: center;padding: 6px">
+      <td style="border-right: 2px solid #6eae61;width: 25%">
+
+        <p style="font-size: 11px">DISTANCE</p>
+
+  </td>
+      <td style="border-right: 2px solid #6eae61;width: 25%">
+
+        <p style="font-size: 11px">QUANTITY</p>
+      </td>
+      <td style="border-right: 2px solid #6eae61;width: 25%">
+
+        <p style="font-size: 11px">PRICE</p>
+      </td>
+      <td style="padding-top: 6px;padding-bottom: 6px">
+
+        <p style="font-size: 11px">AVAILABILITY</p>
+      </td>
     </tr>
   </table>
   <div style="height:15px;"></div>
-  <div style="width: 100%; text-align: center;color: white;background-color: #7fd1e8;padding: 3px;font-size: 17px">SEARCH</div>
+  <div style="width: 100%; text-align: center;color: white;background-color: #3e7337;padding: 3px;font-size: 18px">SEARCH</div>
+
+<div style="height:5px;"></div>
+
+<div *ngIf="map==1">
+<img src="assets/imgs/mapicon.png" style="width: 40px; position: absolute;" (click)="change(0)">
+
+  <div style="height:15px;"></div>
+
+
+<table style="width: 100%;text-align: center;" > 
+  <tr>
+    <td style="width: 33%" (click)="openproduct(1)">
+      <img src="assets/imgs/sample1.jpg" style="width: 100%">
+    </td>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample2.jpg" style="width: 100%">
+    </td>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample3.jpg" style="width: 100%">
+    </td>
+  </tr>
+  <tr>
+    <td  (click)="openproduct(1)">OKRA</td>
+    <td>AMPALAYA</td>
+    <td>PIPINO</td>
+  </tr>
+
+  <tr>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample4.jpg" style="width: 100%">
+    </td>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample6.jpg" style="width: 100%">
+    </td>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample7.jpg" style="width: 100%">
+    </td>
+  </tr>
+  <tr>
+    <td>MALUNGGAY</td>
+    <td>SAYOTE</td>
+    <td>PECHAY</td>
+  </tr>
+
+  <tr>
+    <td style="width: 33%">
+      <img src="assets/imgs/sample8.jpg" style="width: 100%">
+    </td>
+    <td style="width: 33%">
+    </td>
+    <td style="width: 33%">
+    </td>
+  </tr>
+  <tr>
+    <td>TALONG</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+<div *ngIf="map==0">
+<img src="assets/imgs/listicon.png" style="width: 40px; position: absolute;" (click)="change(1)">
+<img src="assets/imgs/map.jpg" style="width: 100%">
+</div>
+
 </ion-content>

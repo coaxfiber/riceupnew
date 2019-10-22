@@ -1,0 +1,19 @@
+page-payments-add {
+
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+	background-image: none;
+}
+
+
+		.skipbutton{
+				margin-left: calc(50% - 100px);
+				width: 200px;
+				background-color: #6fb061;
+				color: white;
+				border-radius: 25px;
+				padding-top: 6px;
+				padding-bottom: 10px;
+				height: 27px;
+				font-size: 15px;
+		}
+}

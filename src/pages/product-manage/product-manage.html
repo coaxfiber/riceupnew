@@ -1,31 +1,116 @@
 <ion-header>
-  <table style="width: 100%;">
+   <table style="width: 100%;text-align: center;">
     <tr>
       <td style="width: 50px;height: 60px" rowspan="1">
           <button ion-button (click)="global.menuToggle()"  class="headbutton">
             <ion-icon name="menu"></ion-icon>
           </button>
       </td>
+
       <td class="headtitle" rowspan="2">
-      	<div style="height: 15px"></div>
-      	<img src="assets/imgs/manageproducts.JPG" style="
-      		width: 100%;
-      		display: block;" />
+        <img src="assets/imgs/manage products veggi icon.svg" style="
+          width: 140px;
+          display: block;margin: auto;" />
+        <span  style="font-size: 25px">MANAGE PRODUCT</span>
       </td>
+
       <td  style="width: 50px" rowspan="1">
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+        
+        &nbsp;
+      </td>
+
+      <td>
+        &nbsp;
       </td>
     </tr>
     <tr>
-      <td>&nbsp;
-      </td>
-      <td>&nbsp;
-      </td>
     </tr>
   </table>
   
 </ion-header>
 
+
 <ion-content padding>
+
+  <table style="width:200px; text-align: center; margin: 0 auto 0 auto">
+    <tr>
+      <td (click)="greenlineactivate(1)">EDIT</td>
+      <td (click)="greenlineactivate(2)">STAT</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="greenline" *ngIf="greenline==1"></div>
+      </td>
+      <td>
+        <div class="greenline" *ngIf="greenline==2"></div>
+      </td>
+    </tr>
+  </table>
 	
+  <div style="height: 15px"></div>
+<div *ngIf="greenline==1">
+
+  <p style="text-align: center;font-size: 50px;margin: 0">
+    3
+  </p>
+  <div style="height: 10px"></div>
+  <p style="text-align: center;margin: 0;font-size: 20px">MY PRODUCTS</p>
   
+
+  <div style="height: 15px"></div>
+<table style="width: 80%;margin-left:10%;text-align: center;" > 
+  <tr>
+    <td style="width: 50%">
+      <img src="assets/imgs/sample1.jpg" style="width: 100%">
+    </td>
+    <td style="width: 50%">
+      <img src="assets/imgs/sample2.jpg" style="width: 100%">
+    </td>
+  </tr>
+  <tr>
+    <td>OKRA</td>
+    <td>AMPALAYA</td>
+  </tr>
+
+  <tr>
+    <td style="width: 50%">
+      <img src="assets/imgs/sample4.jpg" style="width: 100%">
+    </td>
+    <td style="width: 50%">
+    </td>
+  </tr>
+  <tr>
+    <td>MALUNGAY</td>
+    <td></td>
+  </tr>
+</table>
+
+</div>
+
+<div *ngIf="greenline==2">
+
+  <p style="text-align: center;margin: 0;font-size: 20px">SALES</p>
+  <div style="height: 10px"></div>
+
+  <p style="text-align: center;margin: 0;">JULY</p>
+
+  <div style="height: 15px"></div>
+<img src="assets/imgs/samplesalereport.png"
+style="width: 100%" 
+>
+
+  <div style="height: 30px"></div>
+
+  <p style="text-align: center;margin: 0;font-size: 20px">SUMMARY</p>
+  <div style="height: 10px"></div>
+
+  <p style="text-align: center;margin: 0;">blablablabla bla bla blablablablablablabla<br>blavbla  bla bla bla</p>
+</div>
 </ion-content>

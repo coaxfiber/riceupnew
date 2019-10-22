@@ -7,6 +7,7 @@ import { ProductAddPage } from '../product-add/product-add';
 import { ManagePaymentsPage } from '../manage-payments/manage-payments';
 import { ProductManagePage } from '../product-manage/product-manage';
 
+import { BasketPage } from '../basket/basket';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -33,10 +34,13 @@ export class ViewProfilePage {
       this.navCtrl.push(ProductAddPage);
   	}
     if (x==2) {
-      this.navCtrl.push(ManagePaymentsPage);
+      this.navCtrl.push(ProductManagePage);
     }
     if (x==3) {
-      this.navCtrl.push(ProductManagePage);
+      this.navCtrl.push(ManagePaymentsPage);
+    }
+    if (x==5) {
+      this.navCtrl.push(BasketPage);
     }
   } 
 }

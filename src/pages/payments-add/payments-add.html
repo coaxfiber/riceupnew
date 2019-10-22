@@ -1,0 +1,65 @@
+<ion-header>
+  <table style="width: 100%;text-align: center;">
+    <tr>
+      <td style="width: 50px;height: 60px" rowspan="1">
+          <button ion-button (click)="global.menuToggle()"  class="headbutton">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </td>
+
+	 <td class="headtitle" rowspan="2">
+        <img src="assets/imgs/manage payments icon.svg" style="
+          width: 140px;
+          display: block;margin: auto;" />
+        <span  style="font-size: 25px">MANAGE PAYMENTS</span>
+      </td>
+      <td  style="width: 50px" rowspan="1">
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+        
+        <img src="assets/imgs/back.jpg" style="
+          width: 30px;" (click)="poppage()"/>
+      </td>
+
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+    </tr>
+  </table>
+  
+</ion-header>
+
+<ion-content padding>
+	
+	<div style="height: 15px"></div>
+<img src="assets/imgs/samplelinkbank.jpg" style="width: 100%;">
+
+	<div style="height: 20px"></div>
+
+<ion-item>
+  <ion-label>SELECT BANK</ion-label>
+  <ion-select>
+    <ion-option value="f">BPI</ion-option>
+    <ion-option value="m">PNB</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-input placeholder="ACCOUNT NUMBER"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="RE-ENTER ACCOUNT NUMBER"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="ROUTING NUMBER"></ion-input>
+</ion-item>
+  <div style="height: 20px"></div>
+<button class="skipbutton" (click)="closeskip()">VERIFY</button>
+</ion-content>

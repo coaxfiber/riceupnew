@@ -1,0 +1,83 @@
+<ion-header>
+   <table style="width: 100%;text-align: center;">
+    <tr>
+      <td style="width: 50px;height: 60px" rowspan="1">
+          <button ion-button (click)="global.menuToggle()"  class="headbutton">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </td>
+
+      <td class="headtitle" rowspan="2">
+        <span  style="font-size: 25px">OKRA</span>
+        <img src="assets/imgs/sample1.jpg" style="
+          width: 210px;
+          display: block;margin: auto;" />
+      </td>
+
+      <td  style="width: 50px" rowspan="1">
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+        
+        <img src="assets/imgs/back.jpg" style="
+          width: 30px;" (click)="poppage()"/>
+      </td>
+
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+    </tr>
+  </table>
+  
+</ion-header>
+
+
+<ion-content padding>
+  
+  <div style="height:20px"></div>
+
+<table style="width: 100%">
+	<tr>
+		<td style="width: 47%"  (click)="openuser()">
+			<table  style="width: 100%">
+				<tr>
+					<td style="width:80px;">
+						<img src="assets/imgs/prof.png" style="width: 80px;height: 80px;border-radius: 50%;" />
+					</td>
+					<td style="width: 10px"></td>
+					<td>
+						<span style="color: #6eae61"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span><br>
+						TIAMI<br>
+						1KM<br>
+						P25
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="width: 6%"></td>
+		<td>
+			
+			<table  style="width: 100%">
+				<tr>
+					<td style="width:80px;">
+						<img src="assets/imgs/popup.JPG" style="width: 80px;height: 80px;border-radius: 50%;" />
+					</td>
+					<td style="width: 10px"></td>
+					<td>
+						<span style="color: #6eae61"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span><br>
+						ARMANDO<br>
+						1KM<br>
+						P25
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</ion-content>

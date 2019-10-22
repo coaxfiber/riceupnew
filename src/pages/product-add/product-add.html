@@ -1,24 +1,37 @@
 <ion-header>
-  <table style="width: 100%;">
+  <table style="width: 100%;text-align: center;">
     <tr>
       <td style="width: 50px;height: 60px" rowspan="1">
           <button ion-button (click)="global.menuToggle()"  class="headbutton">
             <ion-icon name="menu"></ion-icon>
           </button>
       </td>
+
       <td class="headtitle" rowspan="2">
-      	<img src="assets/imgs/addproduct.JPG" style="
-      		width: 100%;
-      		display: block;" />
+        <img src="assets/imgs/add product image.svg" style="
+          width: 140px;
+          display: block;margin: auto;" />
+        <span  style="font-size: 25px">ADD PRODUCT</span>
       </td>
+
       <td  style="width: 50px" rowspan="1">
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+        
+        <img src="assets/imgs/back.jpg" style="
+          width: 30px;" (click)="poppage()"/>
+      </td>
+
+      <td>
+        &nbsp;
       </td>
     </tr>
     <tr>
-      <td>&nbsp;
-      </td>
-      <td>&nbsp;
-      </td>
     </tr>
   </table>
   
@@ -26,5 +39,72 @@
 
 <ion-content padding>
 	
+<ion-item>
+  <ion-label position="floating">PRODUCT</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">DESCRIPTION</ion-label>
+  <ion-textarea style="height: 100px"></ion-textarea>
+</ion-item>
   
+<ion-item>
+  <ion-label position="floating">
+    <table>
+      <tr>
+        <td>
+          <img src="assets/imgs/locationicon.png" style="width: 20px">
+        </td>
+        <td> PRODUCT</td>
+      </tr>
+    </table>
+    </ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<div style="height: 15px"></div>
+
+<table style="width: 100%;">
+  <tr>
+    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px">
+      
+      <ion-item>
+        <ion-label position="floating">MIN ORDER</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </td>
+    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px">
+      
+      <ion-item>
+        <ion-label position="floating">PRICE</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </td>
+    <td style="width: 30.33%">
+      
+      <ion-item>
+        <ion-label position="floating">IN STOCK</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </td>
+  </tr>
+</table>
+
+<div style="height: 15px"></div>
+<table style="width: 100%">
+  <tr>
+    <td style="width: 150px"><img src="assets/imgs/sampleupload.jpg" style="width: 140px;"></td>
+    <td>UPLOAD PHOTO</td>
+  </tr>
+</table>
+
+<table style="width: 100%">
+  <tr>
+    <td style="width: 60px"><img src="assets/imgs/plus.png" style="width: 50px;"></td>
+    <td>CHOOSE A PHOTO</td>
+  </tr>
+</table>
+
+<img src="assets/imgs/deliveryoptions.png" style="width: 80px;">
+
 </ion-content>

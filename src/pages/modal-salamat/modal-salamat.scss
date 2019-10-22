@@ -1,0 +1,55 @@
+page-modal-salamat {
+ /* Modal */
+  .main-modal {
+    background-color: rgba(0, 0, 0, 0.4); /* for shadow */
+  }
+
+  .modal {
+  overflow:hidden;
+    position: absolute;
+    width: 85%;
+    top: 10%;
+    left: 5%;
+    background: #fff;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }
+
+    .skipbuttons{
+        margin-right: calc(50% - 125px);
+        width: 250px;
+        background-color: white;
+        color: #6eae61;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .skipbutton2{
+
+        margin-left: calc(50% - 125px);
+        width: 250px;
+        background-color: #558745;
+        color: white;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .skipbutton3{
+
+        margin-left: calc(50% - 125px);
+        width: 250px;
+        background-color: white;
+        color: #558745;
+        border-radius: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+}

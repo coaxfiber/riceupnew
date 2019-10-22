@@ -25,4 +25,8 @@ export class PopupOnloadPage {
   closeskip(){
   	this.navCtrl.pop();
   }
+  saveit(){
+// the url,html tag should be called from here , how ?
+window.open('https://www.youtube.com');
+}
 }

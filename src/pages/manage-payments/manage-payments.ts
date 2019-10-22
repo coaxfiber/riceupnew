@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { PaymentsAddPage } from '../payments-add/payments-add';
 
 /**
  * Generated class for the ManagePaymentsPage page.
@@ -21,6 +22,10 @@ export class ManagePaymentsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagePaymentsPage');
+  }
+
+  enterpage(){
+  	this.navCtrl.push(PaymentsAddPage)
   }
 
 }

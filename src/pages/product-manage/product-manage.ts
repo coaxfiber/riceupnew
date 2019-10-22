@@ -16,12 +16,14 @@ import { GlobalProvider } from '../../providers/global/global';
   templateUrl: 'product-manage.html',
 })
 export class ProductManagePage {
-
+greenline = 1
   constructor(public navCtrl: NavController, public navParams: NavParams,public global:GlobalProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductManagePage');
   }
-
+greenlineactivate(x){
+	this.greenline = x
+}
 }

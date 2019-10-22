@@ -23,4 +23,7 @@ export class ProductAddPage {
     console.log('ionViewDidLoad ProductAddPage');
   }
 
+  poppage(){
+      this.navCtrl.pop();
+  }
 }
