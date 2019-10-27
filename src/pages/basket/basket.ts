@@ -30,7 +30,6 @@ openmodal(){
 	const mymodaloptions:ModalOptions = {
 		enableBackdropDismiss:false
 	}
-	console.log('ess')
 	var none='none'
 	const mymodal = this.modal.create(ModalSalamatPage,{data:none},mymodaloptions)
 	mymodal.present()

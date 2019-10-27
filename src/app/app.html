@@ -3,19 +3,21 @@
 
   <ion-content style="background-color: #548746;color: white;">
   
-  <img src="assets/imgs/prof.png" style="width: 100px;height: 100px;border-radius: 50%;display: block;
+  <img [src]='global.checkphoto(global.user.photo)' style="width: 100px;height: 100px;border-radius: 50%;display: block;
   margin-left: auto;
-  margin-right: auto;margin-top: 10px" />
-      <p style="text-align: center;">TAIMI</p>
+  margin-right: auto;margin-top: 10px"  *ngIf="global.user!=undefined"/>
+      <p style="text-align: center;" *ngIf="global.user!=undefined">{{global.user.fname}}</p>
     <div style="height: 2px;width: 80%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px;margin-left: auto;
-  margin-right: auto;"></div>
+  margin-right: auto;"  *ngIf="global.user!=undefined"></div>
+  <div style="height: 30px"  *ngIf="global.user==undefined"></div>
     <table style="width: 100%;margin: 10px;font-size: 15px;margin-top: 20px">
-      <tr>
+      <tr  *ngIf="global.user!=undefined">
         <td (click)="openPage(1)">
-          <ion-icon name="alarm"></ion-icon> VIEW PROFILE
+          
+      <img src="assets/imgs/xxvp.png" style="width:25px; vertical-align: middle;"> VIEW PROFILE
         </td>
       </tr>
-      <tr>
+      <tr  *ngIf="global.user!=undefined">
         <td>
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
@@ -23,7 +25,7 @@
 
       <tr>
         <td  (click)="openPage(2)">
-          <ion-icon name="alarm"></ion-icon> SEARCH PRODUCT
+          <img src="assets/imgs/xxsp.png" style="width:25px; vertical-align: middle;"> SEARCH PRODUCT
         </td>
       </tr>
       <tr>
@@ -34,7 +36,7 @@
 
       <tr>
         <td>
-          <ion-icon name="alarm"></ion-icon> SELL PRODUCT
+          <img src="assets/imgs/xxssp.png" style="width:25px; vertical-align: middle;"> SELL PRODUCT
         </td>
       </tr>
       <tr>
@@ -43,23 +45,34 @@
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <ion-icon name="alarm"></ion-icon> FAVORITES
+      <tr  *ngIf="global.user!=undefined">
+        <td   (click)="openPage(7)">
+          <img src="assets/imgs/xxf.png" style="width:25px; vertical-align: middle;"> FAVORITES
         </td>
       </tr>
-      <tr>
-        <td>
+      <tr  *ngIf="global.user!=undefined">
+        <td >
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
       </tr>
 
-      <tr>
+      <tr  *ngIf="global.user!=undefined">
         <td (click)="openPage(3)">
-          <ion-icon name="alarm"></ion-icon> MESSAGES
+          <img src="assets/imgs/xxm.png" style="width:25px; vertical-align: middle;">  MESSAGES
         </td>
       </tr>
-      <tr>
+      <tr  *ngIf="global.user!=undefined">
+        <td>
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
+        </td>
+      </tr>
+
+      <tr  *ngIf="global.user!=undefined" >
+        <td  (click)="openPage(8)">
+          <img src="assets/imgs/xxs.png" style="width:25px; vertical-align: middle;">  SETTINGS
+        </td>
+      </tr>
+      <tr  *ngIf="global.user!=undefined">
         <td>
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
@@ -67,7 +80,7 @@
 
       <tr>
         <td>
-          <ion-icon name="alarm"></ion-icon> SETTINGS
+          <img src="assets/imgs/xxh.png" style="width:25px; vertical-align: middle;">  HELP
         </td>
       </tr>
       <tr>
@@ -75,14 +88,23 @@
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
       </tr>
-
-      <tr>
+      <tr   *ngIf="global.user==undefined">
+        <td (click)="openPage(5)">
+          <img src="assets/imgs/xxli.png" style="width:25px; vertical-align: middle;"> LOG-IN
+        </td>
+      </tr>
+      <tr   *ngIf="global.user==undefined">
         <td>
-          <ion-icon name="alarm"></ion-icon> HELP
+            <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
       </tr>
       <tr>
-        <td>
+        <td  (click)="openPage(6)"   *ngIf="global.user!=undefined">
+          <img src="assets/imgs/xxlo.png" style="width:25px; vertical-align: middle;"> LOG-OUT
+        </td>
+      </tr>
+      <tr>
+        <td   *ngIf="global.user!=undefined">
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
       </tr>
@@ -93,9 +115,9 @@
   bottom: 0;
   left: 0;
   position: absolute;">
-      <tr>
+      <tr   *ngIf="global.user!=undefined">
         <td  (click)="openPage(4)">
-          <ion-icon name="alarm"></ion-icon> SHOPPING BASKET
+          <img src="assets/imgs/xxb.png" style="width:28px; vertical-align: middle;">  SHOPPING BASKET
         </td>
       </tr>
       <tr>

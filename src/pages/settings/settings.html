@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Change Password</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-item>
+  <ion-label stacked >Password *</ion-label>
+  <ion-input required  [(ngModel)]="p" type="password"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label stacked>New Password *</ion-label>
+  <ion-input  [(ngModel)]="np" type="password"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Confirm Password *</ion-label>
+  <ion-input required  [(ngModel)]="cp" type="password"></ion-input>
+</ion-item>
+
+<div style="width: 100%; text-align: center;color: white;background-color: #3e7337;padding: 10px;font-size: 18px;margin-bottom: 20px;margin-top: 10px" (click)="updatepassword()">Update</div>
+</ion-content>

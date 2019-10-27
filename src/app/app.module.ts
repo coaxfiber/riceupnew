@@ -17,11 +17,27 @@ import { PaymentsAddPage } from '../pages/payments-add/payments-add';
 import { ModalSalamatPage } from '../pages/modal-salamat/modal-salamat';
 import { ProductViewPage } from '../pages/product-view/product-view';
 import { ViewProfileFarmerPage } from '../pages/view-profile-farmer/view-profile-farmer';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { LogsPage } from '../pages/logs/logs';
+import { FavoritesPage } from '../pages/favorites/favorites';
+import { ProfpicPage } from '../pages/profpic/profpic';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GlobalProvider } from '../providers/global/global';
 
+import { IonicStorageModule } from '@ionic/storage';
+
+import { HttpModule } from '@angular/http';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { Transfer, TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
 @NgModule({
   declarations: [
@@ -29,23 +45,13 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     ListPage,
 
-     PopupOnloadPage,
-     ViewProfilePage,
-     MessagesPage,
-     MessagesUserPage,
-     BasketPage,
-     ProductAddPage,
-     ManagePaymentsPage,
-     ProductManagePage,
-     PaymentsAddPage,
-     ModalSalamatPage,
-     ProductViewPage,
-     ViewProfileFarmerPage
 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,13 +69,22 @@ import { GlobalProvider } from '../providers/global/global';
     PaymentsAddPage,
     ModalSalamatPage,
     ProductViewPage,
-    ViewProfileFarmerPage
+    ViewProfileFarmerPage,
+    LoginPage,
+    RegisterPage,
+    LogsPage,
+     FavoritesPage,
+     ProfpicPage,
+     SettingsPage
+
   ],
   providers: [
+  Camera,FileTransfer,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GlobalProvider
+
   ]
 })
 export class AppModule {}

@@ -1,0 +1,34 @@
+<ion-content class="main-modal">
+
+<div class="modal" style="background-color: #6eae61;">
+
+     <img src="assets/imgs/x.png" style="width: 35px;position: absolute; right: 8px;margin-top: 8px" (click)="closemodal()">
+     <img src="assets/imgs/reg.png" style="width: 100%"><br>
+	<div style="background-color: #6eae61;color: white;">
+		<p style="text-align: center;font-size: 32px;margin: 5px">
+			LET'S GET YOU IN
+		</p>
+	<div style="height: 20px"></div>
+
+
+          <input placeholder="first and last name" class="headsearch" style="height: 35px;width: 80%;text-align: left; color: #558745; background-color: white;margin-left: 10%;margin-bottom: 10px" [(ngModel)]="fullname" />
+          <input placeholder="email address" class="headsearch" style="height: 35px;width: 80%;text-align: left; color: #558745; background-color: white;margin-left: 10%;margin-bottom: 10px" 
+          [(ngModel)]="email" />
+          <input placeholder="password" class="headsearch" style="height: 35px;width: 80%;text-align: left; color: #558745; background-color: white;margin-left: 10%;margin-bottom: 10px" [(ngModel)]="password"  type="password" />
+          <input placeholder="confirm password" class="headsearch" style="height: 35px;width: 80%;text-align: left; color: #558745; background-color: white;margin-left: 10%;margin-bottom: 10px" [(ngModel)]="cpassword" type="password" />
+
+	<div style="height: 15px"></div>
+
+		<button class="skipbutton3" (click)="register()">
+		JOIN</button>
+	<div style="height: 10px"></div>
+		<div style="width: 80%;margin-left: 10%;height: 2px;background-color: white;"></div>
+	<div style="height: 15px"></div>
+	<p style="text-align: center; ">
+		<a href="https://riceupfarmers.com/" target="_blank" style="text-decoration: none;"><span style="color: white;border-color: white;border-style: solid;border-width: 1px;width: auto;padding: 3px 10px  3px 10px ; border-radius: 10px;">Learn more about RICEUP</span></a>
+	</p>
+	<div style="height: 10px"></div>
+	</div>
+</div>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-content class="main-modal">
+
+<div class="modal">
+<img src="assets/imgs/x2.png" style="width: 35px;position: absolute; right: 8px;margin-top: 8px" (click)="closemodal()">
+<div style="height: 20px"></div>
+      <!--  <img src="assets/imgs/sample1.jpg" style="width: 100px"><br> -->
+      <h3 style="margin: 0;text-align: center;">Log-in</h3>
+
+
+
+
+			
+<ion-item>
+  <ion-label floating><ion-icon name="contact"></ion-icon> Email</ion-label>
+  <ion-input [(ngModel)]="email" ></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label floating><ion-icon name="eye"></ion-icon> Password</ion-label>
+  <ion-input type="password"  [(ngModel)]="password"></ion-input>
+</ion-item>
+	<div style="height: 15px"></div>
+	<div style="background-color: #6eae61;color: white;">
+
+	<div style="height: 20px"></div>
+
+		<button class="skipbutton3" (click)="login()">Sign in</button>
+
+	<div style="height:10px"></div>
+
+		<button class="skipbutton2" (click)="openregister()">Register</button>
+	
+	<div style="height: 30px"></div>
+	</div>
+</div>
+
+</ion-content>
