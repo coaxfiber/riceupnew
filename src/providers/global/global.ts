@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class GlobalProvider {
   popup = 1;
   api="http://eltonbagne.info/api/riceup/";
+ // api="http://localhost/riceup/";
   user
   constructor(
   private domSanitizer: DomSanitizer, 
@@ -33,9 +34,9 @@ menuToggle(){
 }
 
 
-          presentAlert(val:any) {
+          presentAlert(val:any,val1="Alert") {
             let alert = this.alertCtrl.create({
-              title: 'Alert',
+              title: val1,
               subTitle: val,
               buttons: ['Dismiss']
             });

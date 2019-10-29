@@ -46,13 +46,13 @@ loading: Loading;
 
   register(){
     if (this.password==''||this.fullname==''||this.email=='') {
-      this.global.presentAlert("All fields are required!")
+      this.global.presentAlert("All fields are required!","Warning")
     }else 
     if (!this.ValidateEmail(this.email)){
-      this.global.presentAlert("You have entered an invalid email address!")
+      this.global.presentAlert("You have entered an invalid email address!","Warning")
     }else 
     if (this.password!=this.cpassword){
-      this.global.presentAlert("Passwords does not match!")
+      this.global.presentAlert("Passwords does not match!","Warning")
     }else{
 
       this.loading = this.loadingCtrl.create({
@@ -75,13 +75,18 @@ loading: Loading;
      this.http.post(this.global.api,body,option)
           .map(response => response.json())
           .subscribe(res => {
-
+            console.log(res)
               this.loading.dismissAll();
+            if(res.message=="fail"){
+                this.global.presentAlert("Email address is already taken!","Failed");
+            }else{
+
               this.view.dismiss();
-            this.global.presentAlert("Registration Complete!");
+              this.global.presentAlert("Registration Complete!","Success");
+            }
           },error=>{
               this.loading.dismissAll();
-            this.global.presentAlert("No Internet/Server Down!")
+            this.global.presentAlert("No Internet/Server Down!","Warning")
           })
        }
   }

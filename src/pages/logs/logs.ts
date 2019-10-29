@@ -4,7 +4,8 @@ import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angula
 import { ModalController,ModalOptions } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 
-import { LoginPage } from '..//login/login';
+import { LoginPage } from '../login/login';
+import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the LogsPage page.
  *
@@ -19,18 +20,18 @@ import { LoginPage } from '..//login/login';
 })
 export class LogsPage {
 
- constructor(private modal:ModalController,private view:ViewController,public navCtrl: NavController, public navParams: NavParams) {
+ constructor(public global: GlobalProvider,private modal:ModalController,private view:ViewController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   closemodal(){
   	this.view.dismiss();
   }
-
+  email(){
+     this.global.presentAlert("Not yet implemented","Warning");
+  }
   openlogin(){
   	const mymodaloptions:ModalOptions = {
         enableBackdropDismiss:false

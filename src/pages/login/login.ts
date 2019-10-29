@@ -57,10 +57,10 @@ export class LoginPage {
 login(){
 
     if (this.password==''||this.email=='') {
-      this.global.presentAlert("All fields are required!")
+      this.global.presentAlert("All fields are required!","Warning")
     }else 
     if (!this.ValidateEmail(this.email)){
-      this.global.presentAlert("You have entered an invalid email address!")
+      this.global.presentAlert("You have entered an invalid email address!","Warning")
     }else{
 
       this.loading = this.loadingCtrl.create({
@@ -90,13 +90,13 @@ login(){
                 this.storage.set('email', this.email);
                 this.global.menuToggle()
               }else{
-                this.global.presentAlert("Username or password are incorrect!");
+                this.global.presentAlert("Username or password are incorrect!","Warning");
               }
               //this.view.dismiss();
               //this.presentAlert("Registration Complete!");
           },error=>{
               this.loading.dismissAll();
-            this.global.presentAlert("No Internet/Server Down!")
+            this.global.presentAlert("No Internet/Server Down!","Error")
           })
        }
 }

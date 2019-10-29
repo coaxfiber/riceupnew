@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header style="height: 138px;">
   <table style="width: 100%;text-align: center;">
     <tr>
       <td style="width: 50px;height: 60px" rowspan="1">
@@ -9,9 +9,9 @@
 
       <td class="headtitle" rowspan="2">
         <img src="assets/imgs/add product image.svg" style="
-          width: 140px;
+          width: 90px;
           display: block;margin: auto;" />
-        <span  style="font-size: 25px">ADD PRODUCT</span>
+        <span  style="font-size: 23px">ADD PRODUCT</span>
       </td>
 
       <td  style="width: 50px" rowspan="1">
@@ -24,7 +24,7 @@
       <td>
         
         <img src="assets/imgs/back.jpg" style="
-          width: 30px;" (click)="poppage()"/>
+          width: 25px;" (click)="poppage()"/>
       </td>
 
       <td>
@@ -40,51 +40,60 @@
 <ion-content padding>
 	
 <ion-item>
-  <ion-label position="floating">PRODUCT</ion-label>
+  <ion-label floating>PRODUCT</ion-label>
   <ion-input></ion-input>
 </ion-item>
 <ion-item>
-  <ion-label position="floating">DESCRIPTION</ion-label>
+  <ion-label floating>DESCRIPTION</ion-label>
   <ion-textarea style="height: 100px"></ion-textarea>
 </ion-item>
-  
-<ion-item>
-  <ion-label position="floating">
-    <table>
-      <tr>
-        <td>
-          <img src="assets/imgs/locationicon.png" style="width: 20px">
-        </td>
-        <td> PRODUCT</td>
-      </tr>
-    </table>
-    </ion-label>
-  <ion-input></ion-input>
-</ion-item>
+
+<table style="width: 100%">
+  <tr>
+    <td>
+      <ion-item>
+        <ion-label floating>
+          <table>
+            <tr>
+              <td>
+                <img src="assets/imgs/locationicon.png" style="width: 20px">
+              </td>
+              <td> LOCATION</td>
+            </tr>
+          </table>
+          </ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      </td>
+      <td style="width: 50px">
+        <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;margin-top:30px;border-color: grey;color: grey"> locate </button>
+      </td>
+  </tr>
+</table>
 
 <div style="height: 15px"></div>
 
 <table style="width: 100%;">
   <tr>
-    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px">
+    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px;padding-left: 5px">
       
       <ion-item>
-        <ion-label position="floating">MIN ORDER</ion-label>
-        <ion-input></ion-input>
+        <ion-label stacked style="margin-top:0">MIN ORDER</ion-label>
+        <ion-input type="number"></ion-input>
       </ion-item>
     </td>
-    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px">
+    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px;padding-left: 5px">
       
       <ion-item>
-        <ion-label position="floating">PRICE</ion-label>
-        <ion-input></ion-input>
+        <ion-label stacked style="margin-top:0">PRICE</ion-label>
+        <ion-input type="number"></ion-input>
       </ion-item>
     </td>
     <td style="width: 30.33%">
       
       <ion-item>
-        <ion-label position="floating">IN STOCK</ion-label>
-        <ion-input></ion-input>
+        <ion-label stacked style="margin-top:0;padding-left: 5px">IN STOCK</ion-label>
+        <ion-input type="number"></ion-input>
       </ion-item>
     </td>
   </tr>

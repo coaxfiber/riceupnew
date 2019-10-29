@@ -6,7 +6,7 @@
   <img [src]='global.checkphoto(global.user.photo)' style="width: 100px;height: 100px;border-radius: 50%;display: block;
   margin-left: auto;
   margin-right: auto;margin-top: 10px"  *ngIf="global.user!=undefined"/>
-      <p style="text-align: center;" *ngIf="global.user!=undefined">{{global.user.fname}}</p>
+      <p style="text-align: center;" *ngIf="global.user!=undefined">{{global.user.fname.toUpperCase()}}</p>
     <div style="height: 2px;width: 80%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px;margin-left: auto;
   margin-right: auto;"  *ngIf="global.user!=undefined"></div>
   <div style="height: 30px"  *ngIf="global.user==undefined"></div>
