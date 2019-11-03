@@ -1,0 +1,36 @@
+<ion-content class="main-modal">
+
+<div class="modal">
+
+<div style="height: 10px"></div>
+<p style="margin: 0;text-align: center;">
+	
+       <img [src]="global.checkphoto(navParams.data.data.photo)" style="width: 150px"><br>
+      	<span style="font-size: 22px">{{navParams.data.data.proname | uppercase}}</span>
+</p>
+
+	<div style="background-color: #6eae61;color: white;">
+	<div style="height: 10px"></div>
+	<p style="margin: 15px 0 10px 0;text-align: center;font-size: 30px">
+	Added to Basket
+	</p>
+
+	<div style="height: 10px"></div>
+		<p style="margin: 10px 0 10px 0;text-align: center;">
+			{{navParams.data.data.quantity}} ({{navParams.data.data.min_order}}) of {{navParams.data.data.name}} from {{navParams.data.data.username | titlecase}}<br>
+			for PHP {{getcalculate(navParams.data.data.min_order.price.toString(),navParams.data.data.min_order.quantity.toString())}}
+		</p>
+
+	<div style="height: 30px"></div>
+
+		<button class="skipbutton3" (click)="closemodal()">Keep shopping</button>
+
+	<div style="height:10px"></div>
+
+		<button class="skipbutton2" (click)="gotobasket()">Go to basket</button>
+	
+	<div style="height: 30px"></div>
+	</div>
+</div>
+
+</ion-content>

@@ -14,7 +14,11 @@ import { GlobalProvider } from '../../providers/global/global';
 import { ProductAddPage } from '../product-add/product-add';
 import { ManagePaymentsPage } from '../manage-payments/manage-payments';
 import { ProductManagePage } from '../product-manage/product-manage';
+import { ProfpicPage } from '../profpic/profpic';
+import { SettingsPage } from '../settings/settings';
 import { BasketPage } from '../basket/basket';
+import { AlertController } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -22,21 +26,14 @@ import { BasketPage } from '../basket/basket';
  * Ionic pages and navigation.
  */
 var ViewProfilePage = /** @class */ (function () {
-    function ViewProfilePage(navCtrl, global, navParams, menuCtrl) {
+    function ViewProfilePage(actionSheetController, alertCtrl, navCtrl, global, navParams, menuCtrl) {
+        this.actionSheetController = actionSheetController;
+        this.alertCtrl = alertCtrl;
         this.navCtrl = navCtrl;
         this.global = global;
         this.navParams = navParams;
         this.menuCtrl = menuCtrl;
     }
-    ViewProfilePage.prototype.menuToggle = function () {
-        if (this.menuCtrl.isOpen()) {
-            console.log("is open");
-        }
-        if (this.menuCtrl.isEnabled()) {
-            console.log("is enabled");
-        }
-        this.menuCtrl.toggle();
-    };
     ViewProfilePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ViewProfilePage');
     };
@@ -54,13 +51,45 @@ var ViewProfilePage = /** @class */ (function () {
             this.navCtrl.push(BasketPage);
         }
     };
+    ViewProfilePage.prototype.presentActionSheet = function () {
+        var _this = this;
+        var actionSheet = this.actionSheetController.create({
+            title: 'Settings',
+            buttons: [{
+                    text: 'Update User Information',
+                    icon: 'create',
+                    handler: function () {
+                        _this.navCtrl.push(ProfpicPage);
+                    }
+                }, {
+                    text: 'Change Password',
+                    icon: 'build',
+                    handler: function () {
+                        _this.navCtrl.push(SettingsPage);
+                    }
+                }, {
+                    text: 'Cancel',
+                    icon: 'close',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                }]
+        });
+        actionSheet.present();
+    };
     ViewProfilePage = __decorate([
         IonicPage(),
         Component({
             selector: 'page-view-profile',
             templateUrl: 'view-profile.html',
         }),
-        __metadata("design:paramtypes", [NavController, GlobalProvider, NavParams, MenuController])
+        __metadata("design:paramtypes", [ActionSheetController,
+            AlertController,
+            NavController,
+            GlobalProvider,
+            NavParams,
+            MenuController])
     ], ViewProfilePage);
     return ViewProfilePage;
 }());

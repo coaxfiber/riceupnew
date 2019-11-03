@@ -14,22 +14,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Injectable()
 export class GlobalProvider {
   popup = 1;
-  api="http://eltonbagne.info/api/riceup/";
- // api="http://localhost/riceup/";
+  //api="http://eltonbagne.info/api/riceup/";
+  api="http://192.168.1.2/riceup/";
+  //api="http://localhost/riceup/";
   user
+
+  loclat
+  loclng
+
+  units
   constructor(
   private domSanitizer: DomSanitizer, 
   public menuCtrl: MenuController,private storage:Storage,private alertCtrl: AlertController) {
     console.log('Hello GlobalProvider Provider');
   }
 menuToggle(){
-    if(this.menuCtrl.isOpen()){
-        console.log("is open");
-    }
-    if(this.menuCtrl.isEnabled()){
-        console.log("is enabled");
-    }
-
     this.menuCtrl.toggle();
 }
 

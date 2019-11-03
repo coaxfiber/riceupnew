@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="eb.elton.bagne" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="eltonbagne.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="eltonbagne@gmail.com" href="http://eltonbagne.info/">Ionic Framework Team</author>
@@ -108,4 +108,6 @@
     </plugin>
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-geolocation" spec="4.0.2" />
+    <plugin name="cordova-plugin-nativegeocoder" spec="3.2.2" />
 </widget>

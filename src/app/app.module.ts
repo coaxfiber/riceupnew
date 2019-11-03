@@ -23,6 +23,8 @@ import { LogsPage } from '../pages/logs/logs';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { ProfpicPage } from '../pages/profpic/profpic';
 import { SettingsPage } from '../pages/settings/settings';
+import { LocatePage } from '../pages/locate/locate';
+import { BasketAddToPage } from '../pages/basket-add-to/basket-add-to';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,11 +41,34 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
+    PopupOnloadPage,
+    ViewProfilePage,
+    MessagesPage,
+    MessagesUserPage,
+    BasketPage,
+    ProductAddPage,
+    ManagePaymentsPage,
+    ProductManagePage,
+    PaymentsAddPage,
+    ModalSalamatPage,
+    ProductViewPage,
+    ViewProfileFarmerPage,
+    LoginPage,
+    RegisterPage,
+    LogsPage,
+     FavoritesPage,
+     ProfpicPage,
+     SettingsPage,
+     LocatePage,
+     BasketAddToPage
 
 
   ],
@@ -75,11 +100,15 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     LogsPage,
      FavoritesPage,
      ProfpicPage,
-     SettingsPage
+     SettingsPage,
+     LocatePage,
+     BasketAddToPage
 
   ],
   providers: [
   Camera,FileTransfer,
+  Geolocation,
+    NativeGeocoder,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

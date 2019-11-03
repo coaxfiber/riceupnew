@@ -8,17 +8,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/**
- * Generated class for the FavoritesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage } from 'ionic-angular';
 var FavoritesPage = /** @class */ (function () {
-    function FavoritesPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
+    function FavoritesPage() {
     }
     FavoritesPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad FavoritesPage');
@@ -29,7 +21,7 @@ var FavoritesPage = /** @class */ (function () {
             selector: 'page-favorites',
             templateUrl: 'favorites.html',
         }),
-        __metadata("design:paramtypes", [NavController, NavParams])
+        __metadata("design:paramtypes", [])
     ], FavoritesPage);
     return FavoritesPage;
 }());

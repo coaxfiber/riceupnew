@@ -1,128 +1,245 @@
-<ion-header>
-   <table style="width: 100%;text-align: center;position: absolute;">
-    <tr>
-      <td style="width: 50px;height: 60px" rowspan="1">
-          <button ion-button (click)="global.menuToggle()"  class="headbutton">
+<ion-content>
+
+          <button ion-button (click)="global.menuToggle()"  class="headbutton" style="position: fixed;z-index: 4;margin-left: 5px;margin-top: 15px">
             <ion-icon name="menu"></ion-icon>
           </button>
-      </td>
+	<div>
+		
+<style>
 
-      <td class="headtitle" rowspan="2">
-       
-      </td>
+.collapsible-content {
+  max-height: 150px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
 
-      <td  style="width: 50px" rowspan="1">
-      </td>
 
-    </tr>
+input[type='checkbox'] {
+  display: none;
+}
 
-    <tr>
+.lbl-toggle {
+  display: block;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 5px;
+  color: white;
+  background: #6eae61;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
 
-      <td>
-        
+.lbl-toggle::before {
+  display: inline-block;
+  z-index: 3;
+  margin-top: 0px
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(10px);
+
+  transition: transform .2s ease-out;
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(270deg) translateX(0px);
+}
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 800px;
+}
+
+</style>
+<div class="wrap-collabsible"> 
+  <input id="collapsible" class="toggle" type="checkbox" style="height: 0;visibility: hidden;">
+  <label for="collapsible" class="lbl-toggle" style="height: 0;visibility: hidden;padding: 0">More Info</label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+   <ion-slides style="width:100% !important;z-index: 1" *ngIf="slides!=undefined">
+
+        <ion-slide   *ngFor="let p of slides; let i = index"  no-bounce>
+            <img  [src]='global.checkphoto(p.photo)' style="width:100%"/>
+            <p>{{ i + 1 }}/{{ slides.length }}</p>
+        </ion-slide>
+
+        </ion-slides>
+
+	<ion-spinner name="bubbles" *ngIf="slides==undefined" style="margin-top:20px;margin-left: calc(50% - 10px)"></ion-spinner>
+    </div>
+  </div>
+  <input id="collapsible" class="toggle" type="checkbox">
+  <label for="collapsible" class="lbl-toggle" style="
+  margin-top: -10px;z-index: 3;position: absolute;width: 100%">SHOW</label>
+ 
+
+</div><input id="collapsible2" class="toggle" type="checkbox" checked>
+   
+	</div>
+	<div padding>
+		
+  <table>
+  	<tr>
+  		<td style="width: 30px;padding-top: 5px;">
         <img src="assets/imgs/back.jpg" style="
           width: 30px;" (click)="poppage()"/>
-      </td>
-
-      <td>
-        &nbsp;
-      </td>
-    </tr>
-    <tr>
-    </tr>
+      	</td>
+      	<td>
+		  <p style="margin: 0;font-size: 23px">
+		  {{navParams.data.name | titlecase }}</p>
+		</td>
+  	</tr>
   </table>
-  
-	<img src="assets/imgs/share.png" style="width: 100%">
-</ion-header>
 
-
-<ion-content padding>
-  <p style="margin: 0;font-size: 23px">
-  Freshes Okra in the Barangay</p>
-
-<div style="height: 20px"></div>
+<div style="height: 10px"></div>
 <table style="width: 100%">
 	<tr>
-		<td style="width:105px;text-align: center;">
-			<span style="font-size: 18px">OTHER PRODUCTS</span><br>
-			By: Taimi<br>
-			<div style="height: 10px"></div>
+		<td style="width:105px;text-align: center;" valign="top">
+			<div style="height: 15px"></div>
+			<span style="font-size: 17px">OTHER PRODUCTS</span><br>
+			By: {{navParams.data.user.fname | titlecase }}<br>
+			<div style="height: 5px"></div>
+
+
 			<img src="assets/imgs/arrowup.png" style="width: 80px">
 			<div style="height: 10px"></div>
-			<div style="height: 10px"></div>
-			<img src="assets/imgs/sample2.jpg" style="width: 105px"><br>
-			Gulay
-			<div style="height: 10px"></div>
-			<img src="assets/imgs/sample4.jpg" style="width: 105px"><br>
-			malunggay
+
+
+<ion-spinner name="bubbles" *ngIf="otherpro==undefined" style="margin-left: calc(50% - 10px)"></ion-spinner>
+    <div  *ngIf="otherpro!=undefined">
+      <p style="text-align: center;"  *ngIf="otherpro.length==0">- No other products! -</p>
+    </div>
+    	<div style="overflow-y: scroll;height: calc(100vh - 365px);">
+	    	<div  *ngIf="otherpro!=undefined">
+	    		<div  *ngFor='let a of otherpro; let i = index' (click)="openself(i)">
+					<img [src]='global.checkphoto(a.photo)' style="width: 105px"><br>
+					{{a.name | uppercase }}
+					<div style="height: 10px"></div>
+	    		</div>
+	    	</div>
+    	</div>
 		</td>
 		<td style="border-left: 2px solid #bbbbbb;" valign="top">
 			<table style="width: 100%">
 				<tr>
-					<td style="text-align: right;">
+					<td style="text-align: right;padding-right: 5px">
 						<span style="color: #6eae61"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span><br>
-						<span style="font-size: 18px">TAIMI</span><br>
-						LUBAO, PAMPANGA<br>
-						<span style="color: #a1a1a1">member since feb 19</span>
+						<span style="font-size: 15px">{{navParams.data.user.fname | uppercase }}</span><br>
+						<span style="font-size: 11px">{{navParams.data.user.address | uppercase }}</span><br>
+						<span style="font-size: 11px">member since {{navParams.data.user.member_since }}</span>
 					</td>
-					<td style="width: 80px">
-						<img src="assets/imgs/prof.png" style="width: 80px;height: 80px;border-radius: 50%;" />
+					<td style="width: 80px;">
+						<img  [src]='global.checkphoto(navParams.data.user.photo)' style="width: 80px;height: 80px;border-radius: 50%;" />
 					</td>
 				</tr>
 			</table>
 			<div style="height: 10px"></div>
-			<table style="width: 100%;text-align: left;">
+			<table style="width: 100%;text-align: left;font-size: 10px">
 				<tr>
-					<td style="width: 20%;padding-left: 5px; ">
-						<span style="font-size: 30px">P20</span><br>
-						PER KG
+					<td style="text-align: center;padding: 3px;width: 25%">
+						<span style="font-size: 15px">&#8369;{{navParams.data.price}}</span><br>
+						PER {{navParams.data.min_order}}
 					</td>
-					<td style="width: 30%;border-left: 2px solid #bbbbbb;padding-left: 5px; ">
+					<td style="border-left: 2px solid #bbbbbb;padding: 3px;width: 25%">
 						QTY<br>
 						AVAILABLE<br>
-						120 KG 	
+						{{navParams.data.stock}} ({{navParams.data.min_order}})	
 					</td>
-					<td style="width: 30%;border-left: 2px solid #bbbbbb;padding-left: 5px; ">
-						<span style="font-size: 20">1.3km</span><br>
-						MAP VIEW<br>
+					<td style="border-left: 2px solid #bbbbbb;padding: 3px;text-align: center;width: 25%">
+
+        				<button style="background-color: white;color: black;font-size: 10px" (click)="changemap(0)"  *ngIf="map==1" > MAP VIEW </button>
+        				<div style="height: 50px" *ngIf="map==0">
+        				<button style="background-color: #6eae61;color: white;font-size: 10px;padding-top: 15px;padding-bottom: 100px;position: relative;border-radius: 10px" (click)="changemap(1)" > MAP VIEW </button>
+
+        				</div>
+
 					</td>
-					<td style="width: 20%;border-left: 2px solid #bbbbbb;padding-left: 5px;text-align: center; ">
-						<img src="assets/imgs/deliveryoptions2.png" style="height: 50px;"/>
+					<td style="border-left: 2px solid #bbbbbb;text-align: center ;padding: 3px;width: 25%">
+						<img src="assets/imgs/deliveryoptions2.png" style="width: 54px;" (click)="openselect()"/>
+						<style type="text/css">
+							ion-select {
+							    max-width: 0px;
+							}
+						</style>
+						<ion-item style="height: 0 !important;display: none;">
+						  <ion-select #mySelect style="height: 0px;padding: 0;" [(ngModel)]="doption">
+						    <ion-option value="delivery" *ngIf="navParams.data.delivery_option==1||navParams.data.delivery_option==3">
+						      For delivery
+						    </ion-option>
+						    <ion-option value="pickup" *ngIf="navParams.data.delivery_option==2||navParams.data.delivery_option==3">
+						      For pickup
+						    </ion-option>
+						  </ion-select>
+						 </ion-item>
+
+						<ion-item style="height: 0 !important;display: none;">
+						  <ion-select #mySelect2 style="height: 0px;padding: 0;" [(ngModel)]="pickuptime">
+						    <ion-option *ngFor="let p of pickup" [value]="p.time" >
+						      {{p.time}}
+						    </ion-option>
+						  </ion-select>
+						 </ion-item>
 					</td>
 				</tr>
 			</table>
 
-			<div style="height: 15px"></div>
-
-			<div style="padding: 5px">
-				<table style="width: 100%">
+			<div style="height: 10px"></div>
+			<style type="text/css">
+				.item-md.item-block .item-inner {
+				    padding-right: 3px !important;
+				}.item-md {
+				    padding-left: 3px !important;
+				 }
+				 .item-label-stacked .text-input-md, .item-label-floating .text-input-md {
+				 	margin-right: 0px
+				 }
+			</style>
+			<div style="padding: 5px"  *ngIf="map==1">
+				<table style="width: 100%;padding: 0;margin-left: 5px">
 					<tr>
-						<td>
-							quantity:
-						</td><td>
-							<span style="border: 2px solid #bbbbbb;padding: 10px;border-radius: 15px;"> 5 KG </span>
+						<td style="width:80px;">
+						      <ion-item style='border-style: solid;border-width: 1px;border-color: grey;border-radius: 10px;width:80px;padding-left: 5px'>
+						        <ion-label stacked style="margin-top:0;margin-right: 0;text-align: center;color: black;">quantity</ion-label>
+        						<ion-input type="number"   [(ngModel)]="quantity" min="1" style="margin-right: 0;text-align: center;text-align: center;"></ion-input>
+						    </ion-item>
 						</td>
-						<td style="width: 60px">
-			Available pickup:</td>
-			<td>
-							<span style="border: 2px solid #bbbbbb;padding: 10px;border-radius: 15px;"> 2:15 pm jul 12 </span></td>
+						<td style="text-align: center;" *ngIf="doption==''">
+							choose delivery option
+						</td>
+						<td style="text-align: center;" *ngIf="doption=='delivery'">
+							For Delivery
+						</td>
+						<td style="text-align: center;" *ngIf="doption=='pickup'">
+							For Pickup<br>
+        					<button style="background-color: white;border-style: solid;border-width: 1px;border-color: grey;color: grey;margin-left: 5px" (click)="openselect2()"  *ngIf="pickuptime==''"> choose pickup time </button>
+        					<button style="background-color: white;border-style: solid;border-width: 1px;border-color: grey;color: grey;margin-left: 5px" (click)="openselect2()" *ngIf="pickuptime!=''"> {{pickuptime}} </button>
+						</td>
 					</tr>
 				</table>
 			 
 			<div style="height: 15px"></div>
 			
 			
-		<button class="skipbutton1" (click)="closemodal()">BUY NOW</button>
+		<button class="skipbutton1" (click)="buynow()">BUY NOW</button>
 
 
 			<div style="height: 15px"></div>
 			
-		<button class="skipbutton2" (click)="closemodal()">BUY NOW</button>
+		<button class="skipbutton2" (click)="addtobasket()">ADD TO BASKET</button>
 			<div style="height: 15px"></div>
-		<button class="skipbutton3" (click)="closemodal()">BUY NOW</button>
+		<button class="skipbutton3" (click)="buynow()">BUY NOW</button>
 
+			</div>
+			<div *ngIf="map==0" style="background-color: #6eae61;padding:10px;margin-left: 5px;border-radius: 7px">
+				<div #map3 id="map3" style="width: 100%;height: calc(100vh - 420px)"></div>
 			</div>
 		</td>
 	</tr>
 </table>
+
+	</div>
 </ion-content>

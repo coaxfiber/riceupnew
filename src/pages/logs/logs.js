@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { LoginPage } from '..//login/login';
+import { LoginPage } from '../login/login';
+import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the LogsPage page.
  *
@@ -18,17 +19,20 @@ import { LoginPage } from '..//login/login';
  * Ionic pages and navigation.
  */
 var LogsPage = /** @class */ (function () {
-    function LogsPage(modal, view, navCtrl, navParams) {
+    function LogsPage(global, modal, view, navCtrl, navParams) {
+        this.global = global;
         this.modal = modal;
         this.view = view;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
     LogsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
     };
     LogsPage.prototype.closemodal = function () {
         this.view.dismiss();
+    };
+    LogsPage.prototype.email = function () {
+        this.global.presentAlert("Not yet implemented", "Warning");
     };
     LogsPage.prototype.openlogin = function () {
         var mymodaloptions = {
@@ -45,7 +49,7 @@ var LogsPage = /** @class */ (function () {
             selector: 'page-logs',
             templateUrl: 'logs.html',
         }),
-        __metadata("design:paramtypes", [ModalController, ViewController, NavController, NavParams])
+        __metadata("design:paramtypes", [GlobalProvider, ModalController, ViewController, NavController, NavParams])
     ], LogsPage);
     return LogsPage;
 }());

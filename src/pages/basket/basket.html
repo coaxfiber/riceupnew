@@ -1,5 +1,5 @@
-<ion-header>
-   <table style="width: 100%;text-align: center;">
+<ion-header style="height: 138px;">
+  <table style="width: 100%;text-align: center;">
     <tr>
       <td style="width: 50px;height: 60px" rowspan="1">
           <button ion-button (click)="global.menuToggle()"  class="headbutton">
@@ -9,9 +9,9 @@
 
       <td class="headtitle" rowspan="2">
         <img src="assets/imgs/basket icon.svg" style="
-          width: 140px;
+          width: 90px;
           display: block;margin: auto;" />
-        <span  style="font-size: 25px">BASKET</span>
+        <span  style="font-size: 23px">BASKET</span>
       </td>
 
       <td  style="width: 50px" rowspan="1">
@@ -37,93 +37,74 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding style='padding-top: 0'>
+<style type="text/css">
+  ion-app.md [padding] .scroll-content {
+    padding: 0px 16px 16px 16px;
+}
+</style>
   <table style="width:250px; text-align: center; margin: 0 auto 0 auto">
-    <tr style="font-size: 15">
+    <tr style="font-size: 16px">
       <td (click)="greenlineactivate(1)">PENDING</td>
       <td (click)="greenlineactivate(2)">PAYED</td>
       <td (click)="greenlineactivate(3)">SAVED</td>
     </tr>
     <tr>
       <td>
-        <div class="greenline" *ngIf="greenline==1"></div>
+        <div class="greenline" *ngIf="greenline==1" style="margin-left: auto;margin-right: auto;width: 60px"></div>
       </td>
       <td>
-        <div class="grayline" *ngIf="greenline==2"></div>
+        <div class="grayline" *ngIf="greenline==2"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
       </td>
       <td>
-        <div class="orangeline" *ngIf="greenline==3"></div>
+        <div class="orangeline" *ngIf="greenline==3"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
       </td>
     </tr>
   </table>
-
-<div *ngIf="greenline==1">
-
+<style type="text/css">
+  ion-item{
+    padding: 0
+  }
+  .item-md.item-block .item-inner {
+    padding-right: 0;
+  }
+</style>
+<div *ngIf="pros!=undefined">
+<div>
 <div style="height: 20px"></div>
   <table style="width:100%;text-align: center;font-size: 17px;">
     <tr>
-      <td style="width: 150px">TOTAL: items <b>0</b></td>
+      <td style="width: 150px">TOTAL: items <b>{{ pros.length }}</b></td>
       <td></td>
-      <td style="width: 125px">price: <b>P0</b></td>
+      <td style="width: 125px">price: <b>&#8369;{{ gettotal() }}</b></td>
     </tr>
   </table>
   <div style="height: 1px;background-color: grey;margin: 10px auto 10px auto;width: 90%"></div>
   <div style="height: 20px"></div>
 
-<ion-item>
+<ion-item  *ngFor="let a of pros">
  <table style="width:100%">
    <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample1.jpg" style="width: 100%"><br>
-       ampalaya
+     <td style="width: 85px;text-align: center;" valign="top">
+       <img  [src]="global.checkphoto(a.photo)" style="width: 100%"><br>
+       <span style="font-size: 12px">{{a.proname|titlecase}}</span>
      </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
+     <td  style="font-size: 12px;padding-left: 5px" valign="top">
+      <div style="height: 10px"></div>
        <b>
-         6KG<br>
-         Total: P340
+         {{a.quantity}} ({{a.min_order}})<br>
+         Total: &#8369;{{getcalc(a.quantity.toString(),a.price.toString())}}
        </b><br>
-       Blampo
+       {{a.username|titlecase}}
      </td>
-     <td style="width: 50px;">
-       &nbsp;<br>edit
+     <td style="font-size: 12px;text-align: center;" valign="top">
+       &nbsp;<br>&nbsp;<br>edit
      </td>
-     <td style="width: 110px;text-align: center;">
-       <b>PICKUP</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
+     <td style="max-width: 90px !important;text-align: center;font-size: 12px;word-wrap: break-word;padding-left: 5px">
+       <p style="margin: 0;font-size: 12px;"><b>{{checkdelivery(a.time)}}</b><br>
+       <span *ngIf="a.time!=''"  class="ion-text-wrap" [innerHTML]="a.time"><br></span>
+       <br></p>
        <button class="basketblue">PENDING</button>
-
-     </td>
-   </tr>
- </table>
-</ion-item>
-<ion-item>
- <table style="width:100%">
-   <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample2.jpg" style="width: 100%"><br>
-       okra
-     </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
-       <b>
-         6KG<br>
-         Total: P340
-       </b><br>
-       Blampo
-     </td>
-     <td style="width: 50px;">
-       &nbsp;<br>edit
-     </td>
-     <td style="width: 110px;text-align: center;">
-       <b>DELIVERY</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
-       <button class="basketgreen" (click)="openmodal()">PAY</button>
 
      </td>
    </tr>
@@ -132,148 +113,11 @@
 <div style="height: 20px"></div>
 <p style="margin: 0;text-align: center;color: #6eae61;font-size: 20px">pay for item when picked up</p>
 </div>
-<div *ngIf="greenline==2">
-
-<div style="height: 20px"></div>
-  <table style="width:100%;text-align: center;font-size: 17px;">
-    <tr>
-      <td style="width: 150px">TOTAL: items <b>2</b></td>
-      <td></td>
-      <td style="width: 125px">price: <b>P0</b></td>
-    </tr>
-  </table>
-  <div style="height: 1px;background-color: grey;margin: 10px auto 10px auto;width: 90%"></div>
-  <div style="height: 20px"></div>
-
-<ion-item>
- <table style="width:100%">
-   <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample1.jpg" style="width: 100%"><br>
-       ampalaya
-     </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
-       <b>
-         6KG<br>
-         Total: P340
-       </b><br>
-       Blampo
-     </td>
-     <td style="width: 75px;">
-       &nbsp;<br>details
-     </td>
-     <td style="width: 110px;text-align: center;">
-       <b>PICKED-UP</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
-       <button class="basketgray">PAYED</button>
-
-     </td>
-   </tr>
- </table>
-</ion-item>
-<ion-item>
- <table style="width:100%">
-   <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample2.jpg" style="width: 100%"><br>
-       okra
-     </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
-       <b>
-         6KG<br>
-         Total: P340
-       </b><br>
-       Blampo
-     </td>
-     <td style="width: 75px;">
-       &nbsp;<br>details
-     </td>
-     <td style="width: 110px;text-align: center;">
-       <b>PICKED-UP</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
-       <button class="basketgray">PAYED</button>
-
-     </td>
-   </tr>
- </table>
-</ion-item>
 </div>
-<div *ngIf="greenline==3">
 
-<div style="height: 20px"></div>
-  <table style="width:100%;text-align: center;font-size: 17px;">
-    <tr>
-      <td style="width: 150px">TOTAL: items <b>0</b></td>
-      <td></td>
-      <td style="width: 125px">price: <b>P0</b></td>
-    </tr>
-  </table>
-  <div style="height: 1px;background-color: grey;margin: 10px auto 10px auto;width: 90%"></div>
-  <div style="height: 20px"></div>
 
-<ion-item>
- <table style="width:100%">
-   <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample1.jpg" style="width: 100%"><br>
-       ampalaya
-     </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
-       <b>
-         6KG<br>
-         Total: P340
-       </b><br>
-       Blampo
-     </td>
-     <td style="width: 75px;">
-       &nbsp;<br>edit
-     </td>
-     <td style="width: 110px;text-align: center;">
-       <b>PICKED-UP</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
-       <button class="basketorange">BUY</button>
-
-     </td>
-   </tr>
- </table>
-</ion-item>
-<ion-item>
- <table style="width:100%">
-   <tr>
-     <td style="width: 75px;text-align: center;">
-       <img src="assets/imgs/sample2.jpg" style="width: 100%"><br>
-       okra
-     </td>
-     <td style="width: 20px">
-       &nbsp;
-     </td>
-     <td>
-       <b>
-         6KG<br>
-         Total: P340
-       </b><br>
-       Blampo
-     </td>
-     <td style="width: 75px;">
-       &nbsp;<br>edit
-     </td>
-     <td style="width: 110px;text-align: center;">
-       <b>PICKED-UP</b><br>
-       2:30pm JUN/11<br><div style="height: 5px"></div>
-       <button class="basketorange">BUY</button>
-
-     </td>
-   </tr>
- </table>
-</ion-item>
-</div>
+<ion-spinner name="bubbles" *ngIf="pros==undefined" style="margin-left: calc(50% - 10px)"></ion-spinner>
+    <div  *ngIf="pros!=undefined">
+      <p style="text-align: center;"  *ngIf="pros.length==0">- No product found! -</p>
+    </div>
 </ion-content>

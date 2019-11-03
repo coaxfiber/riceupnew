@@ -46,6 +46,7 @@ export class MyApp {
    public menuCtrl: MenuController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
+       this.getunits();  
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -106,13 +107,34 @@ alertConfirm() {
                       //this.view.dismiss();
                       //this.presentAlert("Registration Complete!");
                   },error=>{
-                      this.loading.dismissAll();
                     this.global.presentAlert("No Internet/Server Down!")
                   })
             }
     })
 
+
+       
     
+  }
+
+  getunits(){
+    var header = new Headers();
+                header.append("Accept", "application/json");
+                header.append("Content-Type", "application/x-www-form-urlencoded");    
+                let option = new RequestOptions({ headers: header });
+                let urlSearchParams = new URLSearchParams();
+                   urlSearchParams.append('pass', 'units');
+                let body = urlSearchParams.toString()
+
+             this.http.post(this.global.api,body,option)
+                  .map(response => response.json())
+                  .subscribe(res => {
+                    console.log(res)
+                      this.global.units = res.data
+
+                      //this.view.dismiss();
+                      //this.presentAlert("Registration Complete!");
+                  })
   }
 
   openPage(x) {

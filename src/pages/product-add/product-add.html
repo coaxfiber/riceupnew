@@ -37,15 +37,15 @@
   
 </ion-header>
 
-<ion-content padding>
-	
+<ion-content >
+<div style="margin-right:15px">	
 <ion-item>
   <ion-label floating>PRODUCT</ion-label>
-  <ion-input></ion-input>
+  <ion-input  [(ngModel)]="name"></ion-input>
 </ion-item>
 <ion-item>
   <ion-label floating>DESCRIPTION</ion-label>
-  <ion-textarea style="height: 100px"></ion-textarea>
+  <ion-textarea style="height: 100px"  [(ngModel)]="desc"></ion-textarea>
 </ion-item>
 
 <table style="width: 100%">
@@ -58,15 +58,15 @@
               <td>
                 <img src="assets/imgs/locationicon.png" style="width: 20px">
               </td>
-              <td> LOCATION</td>
+              <td> LOCATION ADDRESS</td>
             </tr>
           </table>
           </ion-label>
-        <ion-input></ion-input>
+        <ion-input  [(ngModel)]="address"></ion-input>
       </ion-item>
       </td>
       <td style="width: 50px">
-        <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;margin-top:30px;border-color: grey;color: grey"> locate </button>
+        <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;margin-top:30px;border-color: grey;color: grey" (click)="locate()"> locate </button>
       </td>
   </tr>
 </table>
@@ -75,45 +75,103 @@
 
 <table style="width: 100%;">
   <tr>
-    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px;padding-left: 5px">
+    <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px;">
+      
       
       <ion-item>
         <ion-label stacked style="margin-top:0">MIN ORDER</ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
+      <ion-select placeholder="-Select Unit-"   [(ngModel)]="unit">
+        <ion-option *ngFor="let a of global.units" value="{{a.name}}">{{a.name}}</ion-option>
+      </ion-select>
+    </ion-item>
     </td>
     <td style="width: 30.33%;border-right: 1px solid grey;padding-right: 5px;padding-left: 5px">
       
       <ion-item>
         <ion-label stacked style="margin-top:0">PRICE</ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-input type="number"   [(ngModel)]="price" min="0"></ion-input>
       </ion-item>
     </td>
     <td style="width: 30.33%">
       
       <ion-item>
         <ion-label stacked style="margin-top:0;padding-left: 5px">IN STOCK</ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-input type="number"   [(ngModel)]="stock" min="0"></ion-input>
       </ion-item>
     </td>
   </tr>
 </table>
 
 <div style="height: 15px"></div>
-<table style="width: 100%">
-  <tr>
-    <td style="width: 150px"><img src="assets/imgs/sampleupload.jpg" style="width: 140px;"></td>
-    <td>UPLOAD PHOTO</td>
-  </tr>
-</table>
+<div style="margin-left: 10px">
+<img *ngFor="let a of pics ; let s = index" [src]="a" style="width: 60px;float: left;margin-right: 5px;margin-bottom: 5px;" (click)="remove(s)">
+<img src="assets/imgs/upload.png" style="height: 45px;float: left;margin-right: 5px;margin-bottom: 15px;margin-top: 8px;" (click)="upload()">
+</div>
+<div style="clear:both;display:block;margin-left: 10px">
+<div>
+  <table style="width: 100%">
+    <tr>
+      <td style="width: 60px"><img src="assets/imgs/deliveryoptions2.png" style="width: 50px;"></td>
+      <td>
+        <ion-checkbox [(ngModel)]="dd"> </ion-checkbox> DELIVERY<br>
+        <div style="height: 10px"></div>
+        <ion-checkbox [(ngModel)]="dp"> </ion-checkbox> PICKUP
+      </td>
+    </tr>
+  </table>
 
-<table style="width: 100%">
-  <tr>
-    <td style="width: 60px"><img src="assets/imgs/plus.png" style="width: 50px;"></td>
-    <td>CHOOSE A PHOTO</td>
-  </tr>
-</table>
+</div>
+<div *ngIf="dp">
+<img src="assets/imgs/delivery-option.png" style="height: 27px;margin-right: 5px;margin-top: 15px;" (click)="addchange()" *ngIf="add!=true" >
 
-<img src="assets/imgs/deliveryoptions.png" style="width: 80px;">
+<div style="height: 10px"></div>
 
+  <table style="width: 100%"  *ngIf="add==true">
+    <tr>
+      <td style="width: 80px">
+<ion-item style="height: 60px;padding: 0">
+  <ion-label stacked style="margin-top:0">Start</ion-label>
+  <ion-datetime displayFormat="hh:mma"   [(ngModel)]="start" style='padding-top: 0'></ion-datetime>
+</ion-item>
+</td>
+      <td style="width: 80px">
+<ion-item style="height: 60px;padding: 0">
+  <ion-label stacked style="margin-top:0">End</ion-label>
+  <ion-datetime displayFormat="hh:mma" [(ngModel)]="end" style='padding-top: 0'></ion-datetime>
+</ion-item>
+</td>
+ <td style="width: 100px">
+      <ion-item style="height: 60px;padding: 0">
+        <ion-label stacked style="margin-top:0">Day</ion-label>
+      <ion-select  [(ngModel)]="day" style='padding-top: 0'>
+        <ion-option value="Mon">Monday</ion-option>
+        <ion-option value="Tues">Tuesday</ion-option>
+        <ion-option value="Wed">Wednesday</ion-option>
+        <ion-option value="Thu">Thursday</ion-option>
+        <ion-option value="Fri">Friday</ion-option>
+        <ion-option value="Sat">Saturday</ion-option>
+        <ion-option value="Sun">Sunday</ion-option>
+      </ion-select>
+    </ion-item>
+</td>
+<td>
+   <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;border-color: grey;color: grey" (click)="pushpickupcancel()"> x </button>
+   <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;border-color: grey;color: grey" (click)="pushpickup()"> Add </button>
+</td>
+    </tr>
+  </table>
+
+<div style="margin-left: 30px" *ngFor="let a of pickup;let i = index">
+  {{a}} 
+   <button style="height: 30px;background-color: white;border-style: solid;border-width: 1px;margin-top:3px;border-color: grey;color: grey" (click)="removepickup(i)"> remove </button>
+</div>
+</div>
+</div>
+
+<div style="clear:both;display:block;margin-left: 10px;clear:both;display:block;">
+<div style="height: 10px"></div>
+<span style="color: #6eae61;font-size: 30px;text-align: center;float: right;padding-right: calc(50% - 30px)" (click)="addproduct()">save</span>
+</div>
+<div style="height: 20px"></div>
+</div>
 </ion-content>

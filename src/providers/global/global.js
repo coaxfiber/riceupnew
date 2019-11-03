@@ -7,16 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable, Component } from '@angular/core';
-import { ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
-import { Nav } from 'ionic-angular';
-import { ViewProfilePage } from '../../pages/view-profile/view-profile';
-import { MessagesPage } from '../../pages/messages/messages';
-import { BasketPage } from '../../pages/basket/basket';
-import { LogsPage } from '../../pages/logs/logs';
+import { DomSanitizer } from '@angular/platform-browser';
 /*
   Generated class for the GlobalProvider provider.
 
@@ -24,73 +19,40 @@ import { LogsPage } from '../../pages/logs/logs';
   and Angular DI.
 */
 var GlobalProvider = /** @class */ (function () {
-    function GlobalProvider(menuCtrl, storage, alertCtrl) {
+    function GlobalProvider(domSanitizer, menuCtrl, storage, alertCtrl) {
+        this.domSanitizer = domSanitizer;
         this.menuCtrl = menuCtrl;
         this.storage = storage;
         this.alertCtrl = alertCtrl;
         this.popup = 1;
-        this.api = "http://localhost/riceup/";
-        //console.log('Hello GlobalProvider Provider');
+        //api="http://eltonbagne.info/api/riceup/";
+        this.api = "http://192.168.1.2/riceup/";
+        console.log('Hello GlobalProvider Provider');
     }
     GlobalProvider.prototype.menuToggle = function () {
-        if (this.menuCtrl.isOpen()) {
-            console.log("is open");
-        }
-        if (this.menuCtrl.isEnabled()) {
-            console.log("is enabled");
-        }
         this.menuCtrl.toggle();
     };
-    GlobalProvider.prototype.presentAlert = function (val) {
+    GlobalProvider.prototype.presentAlert = function (val, val1) {
+        if (val1 === void 0) { val1 = "Alert"; }
         var alert = this.alertCtrl.create({
-            title: 'Alert',
+            title: val1,
             subTitle: val,
             buttons: ['Dismiss']
         });
         alert.present();
     };
-    GlobalProvider.prototype.openPage = function (x) {
-        console.log(this.nav);
-        this.menuCtrl.close();
-        if (x == 1) {
-            this.nav.setRoot(ViewProfilePage);
+    GlobalProvider.prototype.checkphoto = function (x) {
+        if (x == '') {
+            return 'assets/imgs/no-profile-image.jpg';
         }
-        if (x == 2) {
-            this.nav.setRoot(HomePage);
+        else {
+            return this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;charset=utf-8;base64,' + x);
         }
-        if (x == 3) {
-            this.nav.setRoot(MessagesPage);
-        }
-        if (x == 4) {
-            this.nav.setRoot(BasketPage);
-        }
-        if (x == 5) {
-            var mymodaloptions = {
-                enableBackdropDismiss: false
-            };
-            var none = 'none';
-            var mymodal = this.modal.create(LogsPage, { data: none }, mymodaloptions);
-            mymodal.present();
-        }
-        if (x == 6) {
-            console.log('log');
-            this.storage.set('email', null);
-            this.user = undefined;
-            this.global.user = undefined;
-        }
-        // Reset the content nav to have just this page
-        // we wouldn't want the back button to show in this scenario
     };
-    __decorate([
-        ViewChild(Nav),
-        __metadata("design:type", Nav)
-    ], GlobalProvider.prototype, "nav", void 0);
     GlobalProvider = __decorate([
         Injectable(),
-        Component({
-            templateUrl: 'app.html'
-        }),
-        __metadata("design:paramtypes", [MenuController, Storage, AlertController])
+        __metadata("design:paramtypes", [DomSanitizer,
+            MenuController, Storage, AlertController])
     ], GlobalProvider);
     return GlobalProvider;
 }());

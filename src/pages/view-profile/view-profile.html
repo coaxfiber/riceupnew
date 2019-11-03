@@ -68,18 +68,18 @@
               margin-right: auto;" />
       </td>
       <td  style="width: 33.33%;padding: 5px" (click)="enterpage(2)">
-        <img src="assets/imgs/buttonmanagepro.png" style="width: 100%;
+        <!-- <img src="assets/imgs/buttonmanagepro.png" style="width: 100%;
               border-radius: 50%;
               display: block;
               margin-left: auto;
-              margin-right: auto;" />
+              margin-right: auto;" /> -->
       </td>
       <td  (click)="enterpage(3)" style="padding: 5px">
-        <img src="assets/imgs/managepayments.png" style="width: 100%;
+       <!--  <img src="assets/imgs/managepayments.png" style="width: 100%;
               border-radius: 50%;
               display: block;
               margin-left: auto;
-              margin-right: auto;" />
+              margin-right: auto;" /> -->
       </td>
     </tr>
     <tr>
@@ -88,11 +88,11 @@
     <tr>
       <td style="width: 33.33%;padding: 5px"  (click)="enterpage(4)">
         <div style="">
-          <img src="assets/imgs/buttonfav.png" style="width: 100%;
+         <!--  <img src="assets/imgs/buttonfav.png" style="width: 100%;
               border-radius: 50%;
               display: block;
               margin-left: auto;
-              margin-right: auto;" />
+              margin-right: auto;" /> -->
         </div>
       </td>
       <td  style="width: 33.33%;padding: 5px" (click)="enterpage(5)">
@@ -102,7 +102,7 @@
               margin-left: auto;
               margin-right: auto;" />
       </td>
-      <td (click)="enterpage(6)" style="padding: 5px">
+      <td (click)="enterpage(6)" style="padding: 5px" (click)="presentActionSheet()" >
         <img src="assets/imgs/buttonsettings.png" style="width: 100%;
               border-radius: 50%;
               display: block;
@@ -112,11 +112,11 @@
     </tr>
     <tr *ngIf="global.user.type == 'user'">
       <td  (click)="enterpage(3)" style="padding: 5px">
-        <img src="assets/imgs/managepayments.png" style="width: 100%;
+        <!-- <img src="assets/imgs/managepayments.png" style="width: 100%;
               border-radius: 50%;
               display: block;
               margin-left: auto;
-              margin-right: auto;" />
+              margin-right: auto;" /> -->
       </td>
       <td></td>
       <td>

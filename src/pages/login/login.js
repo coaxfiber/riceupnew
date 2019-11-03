@@ -15,7 +15,6 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { ViewProfilePage } from '../view-profile/view-profile';
 import { GlobalProvider } from '../../providers/global/global';
 import { Storage } from '@ionic/storage'; /**
  * Generated class for the LoginPage page.
@@ -56,10 +55,10 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.login = function () {
         var _this = this;
         if (this.password == '' || this.email == '') {
-            this.global.presentAlert("All fields are required!");
+            this.global.presentAlert("All fields are required!", "Warning");
         }
         else if (!this.ValidateEmail(this.email)) {
-            this.global.presentAlert("You have entered an invalid email address!");
+            this.global.presentAlert("You have entered an invalid email address!", "Warning");
         }
         else {
             this.loading = this.loadingCtrl.create({
@@ -84,16 +83,16 @@ var LoginPage = /** @class */ (function () {
                     _this.view.dismiss();
                     _this.global.user = res.data;
                     _this.storage.set('email', _this.email);
-                    _this.global.nav.setRoot(ViewProfilePage);
+                    _this.global.menuToggle();
                 }
                 else {
-                    _this.global.presentAlert("Username or password are incorrect!");
+                    _this.global.presentAlert("Username or password are incorrect!", "Warning");
                 }
                 //this.view.dismiss();
                 //this.presentAlert("Registration Complete!");
             }, function (error) {
                 _this.loading.dismissAll();
-                _this.global.presentAlert("No Internet/Server Down!");
+                _this.global.presentAlert("No Internet/Server Down!", "Error");
             });
         }
     };
