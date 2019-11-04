@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
  
 import { GlobalProvider } from '../../providers/global/global';
 import { NavController, NavParams } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
  
 declare var google;
@@ -53,31 +53,26 @@ export class LocatePage {
     if (this.global.loclat!=undefined) {
       a = this.global.loclat
       b = this.global.loclng
+
+        this.map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: a, lng: b},
+          zoom: 10
+        });
+    }else{
+      this.geolocation.getCurrentPosition({timeout: 10000,enableHighAccuracy: true}).then((resp) => {
+            this.map = new google.maps.Map(document.getElementById('map'), {
+              center: { lat: resp.coords.latitude, lng: resp.coords.longitude},
+              zoom: 10
+            });
+        }).catch((error) => {
+            this.map = new google.maps.Map(document.getElementById('map'), {
+              center: { lat: 17.625002, lng: 121.727314},
+              zoom: 10
+            });
+        });
     }
-    this.map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: a, lng: b},
-      zoom: 13
-    });
-
-    //this.tryGeolocation();
-    let pos = {
-      lat:  17.647857,
-      lng: 121.674139
-    };
-    this.MyLocation = new google.maps.LatLng(pos);
-
-    let pos2 = {
-      lat:  17.620048,
-      lng: 121.704997
-    };
-
-        this.Destination = new google.maps.LatLng(pos2);
-      this.map.addListener("click", function(event){
-          var lat = event.latLng.lat();
-          var lng = event.latLng.lng();
-          console.log("Lat: "  + lat + "  Lng: "  +  lng);
-       });
   }
+  
  locate(){
    var c = this.map.getCenter();
    this.global.loclat = c.lat()
@@ -85,6 +80,20 @@ export class LocatePage {
    this.navCtrl.pop();
    //this.getGeoencoder(c.lat(),c.lng())
  }
+
+  getlocation(){
+        this.geolocation.getCurrentPosition({timeout: 10000,enableHighAccuracy: true}).then((resp) => {
+            this.map = new google.maps.Map(document.getElementById('map'), {
+              center: { lat: resp.coords.latitude, lng: resp.coords.longitude},
+              zoom: 10
+            });
+        }).catch((error) => {
+          this.map = new google.maps.Map(document.getElementById('map'), {
+              center: { lat: resp.coords.latitude, lng: resp.coords.longitude},
+              zoom: 10
+            }); 
+        });
+  }
  
 getGeoencoder(latitude,longitude){
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)

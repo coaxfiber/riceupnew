@@ -9,7 +9,7 @@ import { ViewProfileFarmerPage } from '../view-profile-farmer/view-profile-farme
 import {Http, Headers, RequestOptions} from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import 'rxjs/add/operator/map';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
  
 declare var google;
@@ -47,16 +47,39 @@ export class HomePage {
 
     this.geo=undefined;         
   }
+          // var position = new google.maps.LatLng(17.604869, 121.735483);
+          //   var infoWindowContent = 'You are here!';
+          //   var infoWindow = new google.maps.InfoWindow({
+          //     content: infoWindowContent,
+          //     position: position,
+          //   });
+          //   infoWindow.setMap(this.map2)
 
+          // var dogwalkMarker = new google.maps.Marker({
+            //   position: position,
+            //   title: 'marker.name',
+            //   icon: 'assets/icon/center_marker.png'});
+            // dogwalkMarker.setMap(this.map2)
+
+          //    this.map.addListener("click", function(event){
+          // var lat = event.latLng.lat();
+          // var lng = event.latLng.lng();
+          // console.log("Lat: "  + lat + "  Lng: "  +  lng);
+          //    });
   getlocation(){
         this.geolocation.getCurrentPosition({timeout: 10000,enableHighAccuracy: true}).then((resp) => {
-          alert(resp.coords.latitude +" - "+resp.coords.longitude)
+            var position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+            var infoWindowContent = 'You are here!';
+            var infoWindow = new google.maps.InfoWindow({
+              content: infoWindowContent,
+              position: position,
+            });
+            infoWindow.setMap(this.map2)
         }).catch((error) => {
-          alert('Error getting location'+ JSON.stringify(error));
+          this.global.presentAlert("Failed to locate position. Turn on location or allow app to access location.","Warning!")
+          
         });
   }
-
-
 
   getimage(x){
     return this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;charset=utf-8;base64,' + x);
@@ -77,59 +100,56 @@ export class HomePage {
  markers=[]
  openmap(){
    setTimeout(() => {
-     if (this.geo==undefined) {
-        //this.getlocation();
-        this.geo=1
-     }
-let latLng = new google.maps.LatLng(17.625002, 121.727314);
+      let latLng = new google.maps.LatLng(17.625002, 121.727314);
 
-let mapOptions = {
-  center: latLng,
-  zoom: 10,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-}
+      let mapOptions = {
+        center: latLng,
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
 
-this.map2 = new google.maps.Map(this.mapElement.nativeElement, mapOptions);  
-//this.getlocation()  
-this.addMarker()
-    },150);
-    }
+      this.map2 = new google.maps.Map(this.mapElement.nativeElement, mapOptions);  
+      //this.getlocation()  
+      this.addMarker();
+      this.getlocation();
+     },150);
+   }
 
- openproduct(x: any){
-     this.navCtrl.push(ProductViewPage,x);
- }
+       openproduct(x: any){
+           this.navCtrl.push(ProductViewPage,x);
+       }
 
-od=[]
- addMarker(){
-var infowindow = new google.maps.InfoWindow();
+      od=[]
+       addMarker(){
+      var infowindow = new google.maps.InfoWindow();
 
-var marker, i=0;
-    var get;
-    var op=[]
-    var navCtrl=this.navCtrl
-    var ViewProfileFarmerPagete = ViewProfileFarmerPage
-            for (var i1 = 0; i1 < this.products.length; ++i1) {
-              if (this.products[i1].product.length==0) {
-                // code...
-              }else{
-                for (var i2 = 0; i2 < this.products[i1].product.length; ++i2) { 
-                      marker = new google.maps.Marker({
-                        position: new google.maps.LatLng( parseFloat(this.products[i1].product[i2].lat), parseFloat(this.products[i1].product[i2].lng)),
-                        map: this.map2,
-                        animation: google.maps.Animation.DROP
-                      });
+      var marker, i=0;
+          var get;
+          var op=[]
+          var navCtrl=this.navCtrl
+          var ViewProfileFarmerPagete = ViewProfileFarmerPage
+                  for (var i1 = 0; i1 < this.products.length; ++i1) {
+                    if (this.products[i1].product.length==0) {
+                      // code...
+                    }else{
+                      for (var i2 = 0; i2 < this.products[i1].product.length; ++i2) { 
+                            marker = new google.maps.Marker({
+                              position: new google.maps.LatLng( parseFloat(this.products[i1].product[i2].lat), parseFloat(this.products[i1].product[i2].lng)),
+                              map: this.map2,
+                              animation: google.maps.Animation.DROP
+                            });
 
-                      op.push(this.products[i1].product[i2])
-                      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                        return function() {
-                          navCtrl.push(ViewProfileFarmerPagete,op[i]);
-                        }
-                      })(marker, i));
+                            op.push(this.products[i1].product[i2])
+                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                              return function() {
+                                navCtrl.push(ViewProfileFarmerPagete,op[i]);
+                              }
+                            })(marker, i));
 
-                    i++
-                }
-              }
-            }
+                          i++
+                      }
+                    }
+                  }
 }
 
   openuser(x){

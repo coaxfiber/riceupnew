@@ -10,6 +10,7 @@ import { LogsPage } from '../logs/logs';
 import { BasketAddToPage } from '../basket-add-to/basket-add-to';
 import { ModalController,ModalOptions } from 'ionic-angular';
 import {Config,LoadingController, Loading } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 declare var google;
 /**
  * Generated class for the ViewProfileFarmerPage page.
@@ -35,6 +36,7 @@ export class ViewProfileFarmerPage {
 
  loading: Loading
   constructor(
+    private geolocation: Geolocation,
   private loadingCtrl: LoadingController ,
   private domSanitizer: DomSanitizer, 
    private modal:ModalController,
@@ -42,6 +44,22 @@ export class ViewProfileFarmerPage {
     console.log(this.navParams.data)
   this.getprobyuser()
   }
+
+  getlocation(){
+        this.geolocation.getCurrentPosition({timeout: 10000,enableHighAccuracy: true}).then((resp) => {
+            var position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+            var infoWindowContent = 'You are here!';
+            var infoWindow = new google.maps.InfoWindow({
+              content: infoWindowContent,
+              position: position,
+            });
+            infoWindow.setMap(this.map3)
+        }).catch((error) => {
+          this.global.presentAlert("Failed to locate position. Turn on location or allow app to access location.","Warning!")
+          
+        });
+  }
+
   slides
   pickup=[]
   pickuptime=''
@@ -91,7 +109,7 @@ export class ViewProfileFarmerPage {
 
  openmap(){
    setTimeout(() => {
-     
+       
       let latLng = new google.maps.LatLng(parseFloat(this.navParams.data.lat), parseFloat(this.navParams.data.lng));
       console.log(parseFloat(this.navParams.data.lat))
       let mapOptions = {
@@ -103,14 +121,11 @@ export class ViewProfileFarmerPage {
       this.map3 = new google.maps.Map(this.mapElement.nativeElement, mapOptions);  
       this.getlocation()  
       this.addMarker()
-          },150);
+     },150);
     }
   openself(x){
       this.navCtrl.pop();
       this.navCtrl.push(ViewProfileFarmerPage,this.openpro[x]);
-  }
-  getlocation() {
-
   }
   addMarker(){
 
