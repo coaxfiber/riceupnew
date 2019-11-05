@@ -80,20 +80,6 @@ export class LocatePage {
    this.navCtrl.pop();
    //this.getGeoencoder(c.lat(),c.lng())
  }
-
-  getlocation(){
-        this.geolocation.getCurrentPosition({timeout: 10000,enableHighAccuracy: true}).then((resp) => {
-            this.map = new google.maps.Map(document.getElementById('map'), {
-              center: { lat: resp.coords.latitude, lng: resp.coords.longitude},
-              zoom: 10
-            });
-        }).catch((error) => {
-          this.map = new google.maps.Map(document.getElementById('map'), {
-              center: { lat: resp.coords.latitude, lng: resp.coords.longitude},
-              zoom: 10
-            }); 
-        });
-  }
  
 getGeoencoder(latitude,longitude){
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)

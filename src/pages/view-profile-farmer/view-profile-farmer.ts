@@ -229,7 +229,6 @@ map=1
                 content: '',
               });
               this.loading.present();
-              var asd = this.pickuptime.replace("to", "to<br>");
                var header = new Headers();
                 header.append("Accept", "application/json");
                 header.append("Content-Type", "application/x-www-form-urlencoded");    
@@ -249,7 +248,7 @@ map=1
                    urlSearchParams.append('transac_userid', this.global.user.id.toString());
                    urlSearchParams.append('quantity', this.quantity.toString());
                    urlSearchParams.append('photo', this.photo);
-                   urlSearchParams.append('time', asd);
+                   urlSearchParams.append('time', this.pickuptime);
                    urlSearchParams.append('status', '1');
                    urlSearchParams.append('proname', this.fpro);
                    urlSearchParams.append('username', this.navParams.data.user.fname);

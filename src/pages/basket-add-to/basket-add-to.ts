@@ -33,7 +33,7 @@ export class BasketAddToPage {
   	this.view.dismiss();
   }
   getcalculate(){
- 	return ((parseFloat(this.navParams.data.data.price)*parseFloat(this.navParams.data.data.quantity)));
+ 	return parseFloat((parseFloat(this.navParams.data.data.price.toString())*parseFloat(this.navParams.data.data.quantity.toString())).toString()).toFixed(2);
   }
   gotobasket(){
   	this.view.dismiss();

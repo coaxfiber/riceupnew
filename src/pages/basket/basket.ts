@@ -5,6 +5,8 @@ import { GlobalProvider } from '../../providers/global/global';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ModalSalamatPage } from '../modal-salamat/modal-salamat';
+import {LoadingController, Loading } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the BasketPage page.
  *
@@ -19,8 +21,11 @@ import { ModalSalamatPage } from '../modal-salamat/modal-salamat';
 })
 export class BasketPage {
 greenline=1
+  loading: Loading;
   constructor(
   private http: Http,
+   private alertCtrl: AlertController,
+   public loadingCtrl: LoadingController,
   private modal:ModalController,
   public navCtrl: NavController,
   public navParams: NavParams,
@@ -44,9 +49,10 @@ openmodal(){
 	mymodal.present()
 }
 pros
+temppros
 loadpro(x){
   this.pros=undefined;
-	var header = new Headers();
+    var header = new Headers();
         header.append("Accept", "application/json");
         header.append("Content-Type", "application/x-www-form-urlencoded");    
         let option = new RequestOptions({ headers: header });
@@ -60,13 +66,43 @@ loadpro(x){
      this.http.post(this.global.api,body,option)
           .map(response => response.json())
           .subscribe(res => {
-             this.pros=res.data
-             console.log(res.data)
+             if (x==1) {
+               this.temppros=res.data
+               this.loadpropending(2)
+             }else{
+               this.pros=res.data
+             }
           },error=>{
             this.pros=[]
             this.global.presentAlert("No Internet/Server Down!","warning")
           })
 }
+loadpropending(x){
+    var header = new Headers();
+        header.append("Accept", "application/json");
+        header.append("Content-Type", "application/x-www-form-urlencoded");    
+        let option = new RequestOptions({ headers: header });
+
+        let urlSearchParams = new URLSearchParams();
+           urlSearchParams.append('id', this.global.user.id);
+           urlSearchParams.append('status', x);
+           urlSearchParams.append('pass', 'getbasket');
+        let body = urlSearchParams.toString()
+
+     this.http.post(this.global.api,body,option)
+          .map(response => response.json())
+          .subscribe(res => {
+              this.pros = this.temppros.concat(res.data);
+          },error=>{
+            this.global.presentAlert("No Internet/Server Down!","Error")
+          })
+}
+
+updatestatus(x,y,a){
+
+ this.alertConfirm(x,y,a)
+}
+
 getcalc(a,b){
   var x= parseFloat(b)
   var y= parseFloat(a)
@@ -89,4 +125,61 @@ checkdelivery(a){
   }else
   return "DELIVERY"
 }
+
+
+alertConfirm(x,y,a) {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm Transaction',
+        message: 'are you sure you want to continue?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+
+      this.loading = this.loadingCtrl.create({
+        content: '',
+      });
+      this.loading.present();
+
+  var header = new Headers();
+        header.append("Accept", "application/json");
+        header.append("Content-Type", "application/x-www-form-urlencoded");    
+        let option = new RequestOptions({ headers: header });
+
+        let urlSearchParams = new URLSearchParams();
+           urlSearchParams.append('id', x);
+           urlSearchParams.append('status', y);
+           urlSearchParams.append('pass', 'payinbasket');
+        let body = urlSearchParams.toString()
+
+     this.http.post(this.global.api,body,option)
+          .map(response => response.json())
+          .subscribe(res => {
+              this.loading.dismissAll();
+              if (y==2) {
+                this.loadpro(1)
+              }
+               const mymodaloptions:ModalOptions = {
+                enableBackdropDismiss:false
+              }
+              var none='none'
+              const mymodal = this.modal.create(ModalSalamatPage,{data:a},mymodaloptions)
+              mymodal.present()
+
+          },error=>{
+              this.loading.dismissAll();
+            this.global.presentAlert("No Internet/Server Down!","Error")
+          })
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 }

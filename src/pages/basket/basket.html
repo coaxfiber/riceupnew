@@ -46,18 +46,18 @@
   <table style="width:250px; text-align: center; margin: 0 auto 0 auto">
     <tr style="font-size: 16px">
       <td (click)="greenlineactivate(1)">PENDING</td>
-      <td (click)="greenlineactivate(2)">PAYED</td>
-      <td (click)="greenlineactivate(3)">SAVED</td>
+      <td (click)="greenlineactivate(3)">PAYED</td>
+      <td (click)="greenlineactivate(4)">SAVED</td>
     </tr>
     <tr>
       <td>
         <div class="greenline" *ngIf="greenline==1" style="margin-left: auto;margin-right: auto;width: 60px"></div>
       </td>
       <td>
-        <div class="grayline" *ngIf="greenline==2"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
+        <div class="grayline" *ngIf="greenline==3"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
       </td>
       <td>
-        <div class="orangeline" *ngIf="greenline==3"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
+        <div class="orangeline" *ngIf="greenline==4"  style="margin-left: auto;margin-right: auto;width: 45px"></div>
       </td>
     </tr>
   </table>
@@ -72,46 +72,152 @@
 <div *ngIf="pros!=undefined">
 <div>
 <div style="height: 20px"></div>
-  <table style="width:100%;text-align: center;font-size: 17px;">
+  <table style="width:100%;font-size: 17px;">
     <tr>
-      <td style="width: 150px">TOTAL: items <b>{{ pros.length }}</b></td>
+      <td style="width: 150px;text-align: left;">TOTAL: items <b>{{ pros.length }}</b></td>
       <td></td>
-      <td style="width: 125px">price: <b>&#8369;{{ gettotal() }}</b></td>
+      <td style="width: 125px;text-align: right;">price: <b>&#8369;{{ gettotal() }}</b></td>
     </tr>
   </table>
-  <div style="height: 1px;background-color: grey;margin: 10px auto 10px auto;width: 90%"></div>
-  <div style="height: 20px"></div>
+  <div style="height: 2px;background-color: grey;margin: 10px auto 10px auto;width: 90%"></div>
 
-<ion-item  *ngFor="let a of pros">
- <table style="width:100%">
-   <tr>
-     <td style="width: 85px;text-align: center;" valign="top">
-       <img  [src]="global.checkphoto(a.photo)" style="width: 100%"><br>
-       <span style="font-size: 12px">{{a.proname|titlecase}}</span>
-     </td>
-     <td  style="font-size: 12px;padding-left: 5px" valign="top">
-      <div style="height: 10px"></div>
-       <b>
-         {{a.quantity}} ({{a.min_order}})<br>
-         Total: &#8369;{{getcalc(a.quantity.toString(),a.price.toString())}}
-       </b><br>
-       {{a.username|titlecase}}
-     </td>
-     <td style="font-size: 12px;text-align: center;" valign="top">
-       &nbsp;<br>&nbsp;<br>edit
-     </td>
-     <td style="max-width: 90px !important;text-align: center;font-size: 12px;word-wrap: break-word;padding-left: 5px">
-       <p style="margin: 0;font-size: 12px;"><b>{{checkdelivery(a.time)}}</b><br>
-       <span *ngIf="a.time!=''"  class="ion-text-wrap" [innerHTML]="a.time"><br></span>
-       <br></p>
-       <button class="basketblue">PENDING</button>
+<div class="tabs">
+    <div class="row">
+      <div class="col" style="margin-right: 0px">
+        <ion-item  *ngFor="let a of pros">
+          <input type="radio" id="rd{{a.id}}" name="rd">
+            <table style="width: 100%">
+              <tr>
+                <td>
+                   <table style="width:100%" >
+                     <tr>
+                       <td style="width: 85px;text-align: center;" valign="top">
+                         <img  [src]="global.checkphoto(a.photo)" style="width: 100%"><br>
+                         <span style="font-size: 12px">{{a.proname|titlecase}}</span>
+                       </td>
+                       <td  style="font-size: 12px;padding-left: 5px" valign="top">
+                        <div style="height: 10px"></div>
+                         <b>
+                           {{a.quantity}} ({{a.min_order}})<br>
+                           Total: &#8369;{{getcalc(a.quantity.toString(),a.price.toString())}}
+                         </b><br>
+                         {{a.username|titlecase}}
+                       </td>
+                       <td style="text-align: center;">       
+                        <label style="font-size: 12px;">
+                        edit</label>
+                       </td>
+                     </tr>
+                   </table>
+                </td>
 
-     </td>
-   </tr>
- </table>
-</ion-item>
-<div style="height: 20px"></div>
-<p style="margin: 0;text-align: center;color: #6eae61;font-size: 20px">pay for item when picked up</p>
+                 <td style="width: 90px !important;text-align: center;font-size: 12px;padding-left: 5px;white-space: normal;">
+
+                   <p style="margin: 0;font-size: 12px;"><b>{{checkdelivery(a.time)}}</b><br>
+                   <span *ngIf="a.time!=''"  class="ion-text-wrap">{{a.time}}</span>
+                   </p>
+                   <div style="height: 10px"></div>
+                  <label class="tab-label" for="rd{{a.id}}">
+                   <span class="basketgreen" style=""  *ngIf="a.status==1" >&nbsp;&nbsp;&nbsp;&nbsp;PAY&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                   
+                   <span class="basketblue" style=""  *ngIf="a.status==2" >PENDING</span>
+                 </label>
+                   <div style="height: 10px"></div>
+                 </td>
+              </tr>
+            </table>
+
+        <div class="tab-content">
+          <table style="width: 100%;font-size: 13px">
+            <tr>
+              <td>
+                <table style="width: 100%">
+                  <tr *ngIf="a.time!=''">
+                    <td style="width: 100px;text-align: right;" valign="top">
+                      <b>PUCKUP:</b>&nbsp;&nbsp;
+                    </td>
+                    <td style="white-space: normal;" >{{a.time}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="a.time==''">
+                    <td style="text-align: center;" colspan="2">
+                      <b>Delivery</b>&nbsp;&nbsp;
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px;text-align: right;" valign="top">
+                      <div style="height: 10px"></div>
+                      <b>QTY:</b>&nbsp;&nbsp;
+                    </td>
+                    <td>
+                      <div style="height: 10px;font-size: 12px"></div>
+                      {{a.quantity}} ({{a.min_order}}) of <br>{{a.name|lowercase}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px;text-align: right;" valign="top">
+                      <div style="height: 10px;"></div>
+                      <b>Address:</b>&nbsp;&nbsp;
+                    </td>
+                    <td style="font-size: 12px;color: #6eae61;white-space: normal;">
+                      <div style="height: 10px;"></div>
+                      {{a.location | titlecase}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px;text-align: right;" valign="top">
+                      <div style="height: 10px;"></div>
+                      <b>TOTAL:</b>&nbsp;&nbsp;
+                    </td>
+                    <td  style="font-size: 13px;">
+                      <div style="height: 10px;"></div>
+                      <b>&#8369;{{getcalc(a.quantity.toString(),a.price.toString())}}</b>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 110px;text-align: center;padding-left: 10px" text-center valign="top">
+                <img [src]="global.checkphoto(a.user.photo)" style="width: 30px;align-items: center;margin-left: calc(50% - 15px);border-radius: 50%;display: block;">
+                <span style="font-size: 15px">{{a.user.fname | titlecase}}</span>
+                <div style="height: 5px"></div>
+                seller photo
+                <div style="height: 5px"></div>
+
+                    <ion-slides style="width: 100px !important;">
+                      <ion-slide   *ngFor="let p of a.product; let i = index"  no-bounce>
+                          <img  [src]='global.checkphoto(p.photo)' style="width:100%"/>
+                          <p>{{ i + 1 }}/{{ a.product.length }}</p>
+                      </ion-slide>
+                    </ion-slides>
+              </td>
+            </tr>
+          </table>
+          <div style="height: 10px;"></div>
+            <table style="width: 100%;">
+              <tr>
+                <td style="">
+                  <div  *ngIf="a.status==1">
+                   <button class="buttonlargegreen"  *ngIf="a.time!=''" (click)="updatestatus(a.id,2,a)">PAY FOR ITEM WHEN PICKED UP</button>
+                   <button class="buttonlargegreen"  *ngIf="a.time==''"  (click)="updatestatus(a.id,2,a)">PAY FOR ITEM WHEN DELIVERED</button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          <div style="height: 20px;"></div>
+
+          <div class="tab">
+            <input type="radio" id="rd0{{a.id}}" name="rd">
+
+            <label for="rd0{{a.id}}" class="tab-close" style="font-size: 12px;float: right;">
+            &times; Close</label>
+            
+          </div>
+        </div>
+        </ion-item>
+
+    </div>
+  </div>
+</div>
 </div>
 </div>
 

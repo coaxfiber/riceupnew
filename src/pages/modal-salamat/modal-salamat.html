@@ -5,35 +5,30 @@
 <div style="height: 10px"></div>
 <p style="margin: 0;text-align: center;">
 	
-       <img src="assets/imgs/sample1.jpg" style="width: 100px"><br>
-       ampalaya
+       <img [src]="global.checkphoto(navParams.data.data.photo)" style="width: 150px"><br>
+      	<span style="font-size: 22px">{{navParams.data.data.proname | uppercase}}</span>
 </p>
 
 	<div style="background-color: #6eae61;color: white;">
-	<p style="margin: 15px 0 10px 0;text-align: center;font-size: 40px">
+	<p style="margin: 20px 0 10px 0;text-align: center;font-size: 40px">
 	SALAMAT!
 	</p>
 
 		<p style="margin: 10px 0 10px 0;text-align: center;">
 			you just ordered<br>
-			6kg of ampalaya from Blampo<br>
-			for PHP 340
+			{{navParams.data.data.quantity}} ({{navParams.data.data.min_order}}) of {{navParams.data.data.name}} from {{navParams.data.data.username | titlecase}}<br>
+			for PHP {{getcalculate()}}
 		</p>
 
-	<div style="height: 30px"></div>
+	<div style="height: 20px"></div>
 
-		<p style="margin: 10px 0 10px 0;text-align: center;">
+		<p style="margin: 10px 0 40px 0;text-align: center;" *ngIf="navParams.data.data.time!=''">
 			Your order is pending! don't<br>
 			forget your pick up time is<br>
-			<b style="font-size: 14px">2:30pm Jun/11</b>
+			<b style="font-size: 14px">{{navParams.data.data.time}}</b>
 		</p>
-	<div style="height: 30px"></div>
 
 		<button class="skipbutton3" (click)="closemodal()">Back to basket</button>
-
-	<div style="height:10px"></div>
-
-		<button class="skipbutton2" (click)="closemodal()">keep shopping</button>
 	
 	<div style="height: 30px"></div>
 	</div>

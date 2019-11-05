@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
 
 /**
  * Generated class for the ModalSalamatPage page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angula
 })
 export class ModalSalamatPage {
 
-  constructor(private view:ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private view:ViewController,
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public global:GlobalProvider) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +28,12 @@ export class ModalSalamatPage {
 
   closemodal(){
   	this.view.dismiss();
+  }
+  getcalculate(){
+   return parseFloat((parseFloat(this.navParams.data.data.price.toString())*parseFloat(this.navParams.data.data.quantity.toString())).toString()).toFixed(2);
+  }
+  gotobasket(){
+    this.view.dismiss();
   }
 
 }
