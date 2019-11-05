@@ -50,28 +50,30 @@
     </tr>
   </table>
   <div style="height: 20px"></div>
-  <table  style="width:100%;text-align: center;">
-    <tr style="font-size: 20px;width:100%;text-align: center;padding: 6px">
-      <td style="border-right: 2px solid #6eae61;width: 25%">
+  <div *ngIf="products!=undefined">
+    <div  *ngIf="products.length==1">
+      <table  style="width:100%;text-align: center;">
+        <tr style="font-size: 20px;width:100%;text-align: center;padding: 6px">
+          <td style="border-right: 2px solid #6eae61;width: 25%">
+            <p style="font-size: 11px">DISTANCE</p>
+          </td>
+          <td style="border-right: 2px solid #6eae61;width: 25%">
 
-        <p style="font-size: 11px">DISTANCE</p>
+            <p style="font-size: 11px">QUANTITY</p>
+          </td>
+          <td style="border-right: 2px solid #6eae61;width: 25%">
 
-  </td>
-      <td style="border-right: 2px solid #6eae61;width: 25%">
+            <p style="font-size: 11px">PRICE</p>
+          </td>
+          <td style="padding-top: 6px;padding-bottom: 6px">
 
-        <p style="font-size: 11px">QUANTITY</p>
-      </td>
-      <td style="border-right: 2px solid #6eae61;width: 25%">
-
-        <p style="font-size: 11px">PRICE</p>
-      </td>
-      <td style="padding-top: 6px;padding-bottom: 6px">
-
-        <p style="font-size: 11px">AVAILABILITY</p>
-      </td>
-    </tr>
-  </table>
-  <div style="height:15px;"></div>
+            <p style="font-size: 11px">AVAILABILITY</p>
+          </td>
+        </tr>
+      </table>
+      <div style="height:15px;"></div>
+      </div>
+  </div>
   <div style="width: 100%; text-align: center;color: white;background-color: #3e7337;padding: 3px;font-size: 18px" (click)="searchfunc()">SEARCH</div>
 
 <div style="height:5px;"></div>

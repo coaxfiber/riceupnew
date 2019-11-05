@@ -159,14 +159,13 @@ export class HomePage {
     this.map =1
     this.products=[]
    for (var i = 0;i<this.searches.length; i++) {
-     if (this.searches[i].name.includes(this.search)) {
+     if (this.searches[i].name.toLowerCase().includes(this.search.toLowerCase())) {
        this.products.push(this.searches[i])
      }
    }
    if (this.products.length==1) {
       this.loaduserprod(this.products[0].name)
       this.pic=this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;charset=utf-8;base64,' + this.products[0].photo)
-
    }
   }
 
@@ -211,7 +210,7 @@ export class HomePage {
           .subscribe(res => {
              this.searches=res.data
              this.products=res.data
-             
+             console.log(this.searches)
           },error=>{
             this.products=[]
             this.global.presentAlert("No Internet/Server Down!","warning")
