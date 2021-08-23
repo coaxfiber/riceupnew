@@ -70,7 +70,6 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
      LocatePage,
      BasketAddToPage
 
-
   ],
   imports: [
     BrowserModule,

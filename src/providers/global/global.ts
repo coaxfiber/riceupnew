@@ -25,7 +25,9 @@ export class GlobalProvider {
   units
   constructor(
   private domSanitizer: DomSanitizer, 
-  public menuCtrl: MenuController,private storage:Storage,private alertCtrl: AlertController) {
+  public menuCtrl: MenuController,
+  private storage:Storage,
+  private alertCtrl: AlertController) {
     console.log('Hello GlobalProvider Provider');
   }
 menuToggle(){
@@ -33,14 +35,14 @@ menuToggle(){
 }
 
 
-          presentAlert(val:any,val1="Alert") {
-            let alert = this.alertCtrl.create({
-              title: val1,
-              subTitle: val,
-              buttons: ['Dismiss']
-            });
-            alert.present();
-          }
+    presentAlert(val:any,val1="Alert") {
+      let alert = this.alertCtrl.create({
+        title: val1,
+        subTitle: val,
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
 
      checkphoto(x){
        if (x=='') {

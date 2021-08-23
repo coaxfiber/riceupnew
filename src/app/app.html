@@ -34,8 +34,8 @@
         </td>
       </tr>
 
-      <!-- <tr>
-        <td>
+       <tr>
+        <td (click)="global.presentAlert('Not yet accessible.','Info')">
           <img src="assets/imgs/xxssp.png" style="width:25px; vertical-align: middle;"> SELL PRODUCT
         </td>
       </tr>
@@ -46,7 +46,7 @@
       </tr>
 
       <tr  *ngIf="global.user!=undefined">
-        <td   (click)="openPage(7)">
+        <td   (click)="global.presentAlert('Not yet accessible.','Info')">
           <img src="assets/imgs/xxf.png" style="width:25px; vertical-align: middle;"> FAVORITES
         </td>
       </tr>
@@ -57,7 +57,7 @@
       </tr>
 
       <tr  *ngIf="global.user!=undefined">
-        <td (click)="openPage(3)">
+        <td  (click)="global.presentAlert('Not yet accessible.','Info')">
           <img src="assets/imgs/xxm.png" style="width:25px; vertical-align: middle;">  MESSAGES
         </td>
       </tr> 
@@ -65,7 +65,7 @@
         <td>
             <div style="height: 1px;width: 85%;background-color: white;margin-left: 10px;opacity: 0.8;margin-bottom: 13px;margin-top: 10px"></div>
         </td>
-      </tr>-->
+      </tr>
 
       <tr  *ngIf="global.user!=undefined" >
         <td  (click)="openPage(8)">
@@ -121,7 +121,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td (click)="global.presentAlert('Not yet accessible.','Info')">
           <div style="height: 10px"></div>
           DONATE
         </td>
